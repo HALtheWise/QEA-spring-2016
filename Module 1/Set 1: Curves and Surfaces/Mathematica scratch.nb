@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[   1024483,      17476]
-NotebookOptionsPosition[   1022530,      17408]
-NotebookOutlinePosition[   1022866,      17423]
-CellTagsIndexPosition[   1022823,      17420]
+NotebookDataLength[   1025655,      17509]
+NotebookOptionsPosition[   1023658,      17440]
+NotebookOutlinePosition[   1023994,      17455]
+CellTagsIndexPosition[   1023951,      17452]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -13825,10 +13825,10 @@ xb4pMOBs5cFCy9QuBPIZkdFn/77Jx3Pd8D8eafuG
         Scaled[0.02], 
         Scaled[0.02]},
       Ticks->{Automatic, Automatic, Automatic},
-      ViewPoint->{1.4747586986462868`, -2.8511537647405683`, 
-       1.0705180944630475`},
-      ViewVertical->{0.2456099263829968, -0.21995482611781114`, 
-       0.9440845505195086}]}
+      ViewPoint->{2.4918103961787317`, -1.8800601855700385`, 
+       1.3062368269689655`},
+      ViewVertical->{0.29116684385751257`, -0.013269291760772739`, 
+       0.9565802605815273}]}
    },
    AutoDelete->False,
    GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
@@ -13837,16 +13837,14 @@ xb4pMOBs5cFCy9QuBPIZkdFn/77Jx3Pd8D8eafuG
  CellChangeTimes->{{3.66257804890617*^9, 3.66257807282213*^9}, {
    3.662578180558222*^9, 3.662578190584341*^9}, 3.66257826046914*^9, {
    3.6626005301557913`*^9, 3.662600581951899*^9}, 3.662600647645399*^9}]
-}, Open  ]],
-
-Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.662578618831615*^9, 3.662578621470504*^9}}]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Implicitly defining an apple", "Section",
- CellChangeTimes->{{3.6625786251808243`*^9, 3.66257863777241*^9}}],
+Cell["12/13. Implicitly defining an apple", "Section",
+ CellChangeTimes->{{3.6625786251808243`*^9, 3.66257863777241*^9}, {
+  3.66260116675919*^9, 3.6626011751133204`*^9}}],
 
 Cell[CellGroupData[{
 
@@ -14020,7 +14018,7 @@ Cell[BoxData[
 Cell[BoxData[
  TagBox[
   StyleBox[
-   DynamicModuleBox[{$CellContext`i$$ = 1.06, $CellContext`i2$$ = 1., 
+   DynamicModuleBox[{$CellContext`i$$ = 1.242, $CellContext`i2$$ = 0.714, 
     Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
     Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
     1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
@@ -14064,26 +14062,38 @@ Cell[BoxData[
    3.6626005540842237`*^9, 3.66260064826267*^9, 3.6626006814345503`*^9}]
 }, Open  ]],
 
+Cell["\<\
+Playing with the manipulate sliders let me discover that (1.4, 0.7) was a \
+resonable set of values. Here they are plugged in.\
+\>", "Text",
+ CellChangeTimes->{{3.6626010435876207`*^9, 3.662601080303928*^9}, 
+   3.662601150851248*^9}],
+
 Cell[CellGroupData[{
 
 Cell[BoxData[{
+ RowBox[{"appleFunction", " ", ":=", " ", 
+  RowBox[{
+   RowBox[{"z", "^", "2"}], " ", "+", " ", 
+   RowBox[{"1.4", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Sqrt", "[", 
+        RowBox[{
+         RowBox[{"x", "^", "2"}], "+", 
+         RowBox[{"y", "^", "2"}]}], "]"}], "-", ".7"}], ")"}], "^", 
+     "2"}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"TraditionalForm", "[", 
+   RowBox[{"appleFunction", "\[Equal]", "1"}], "]"}], 
+  "]"}], "\[IndentingNewLine]", 
  RowBox[{"export", " ", "=", " ", 
   RowBox[{"Rasterize", "[", 
    RowBox[{
     RowBox[{"ContourPlot3D", "[", 
      RowBox[{
-      RowBox[{
-       RowBox[{
-        RowBox[{"z", "^", "2"}], " ", "+", " ", 
-        RowBox[{"1.4", 
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"Sqrt", "[", 
-             RowBox[{
-              RowBox[{"x", "^", "2"}], "+", 
-              RowBox[{"y", "^", "2"}]}], "]"}], "-", ".7"}], ")"}], "^", 
-          "2"}]}]}], " ", "\[Equal]", "1"}], ",", " ", 
+      RowBox[{"appleFunction", "\[Equal]", "1"}], ",", " ", 
       RowBox[{"{", 
        RowBox[{"x", ",", 
         RowBox[{"-", "1.6"}], ",", "1.6"}], "}"}], ",", 
@@ -14097,10 +14107,31 @@ Cell[BoxData[{
    "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Export", "[", 
-   RowBox[{"\"\<Apple.png\>\"", ",", " ", "export"}], "]"}], ";"}]}], "Input",\
-
+   RowBox[{"\"\<Apple.png\>\"", ",", " ", "export"}], "]"}], 
+  ";"}], "\[IndentingNewLine]"}], "Input",
  CellChangeTimes->{{3.662579652043062*^9, 3.662579766081411*^9}, {
-  3.662580077681814*^9, 3.662580109906172*^9}}],
+   3.662580077681814*^9, 3.662580109906172*^9}, {3.662600910664212*^9, 
+   3.6626010209965067`*^9}, {3.662601087994907*^9, 3.662601092240048*^9}, 
+   3.662601127941578*^9}],
+
+Cell[BoxData[
+ TagBox[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"1.4`", " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         SqrtBox[
+          RowBox[{
+           SuperscriptBox["x", "2"], "+", 
+           SuperscriptBox["y", "2"]}]], "-", "0.7`"}], ")"}], "2"]}], "+", 
+     SuperscriptBox["z", "2"]}], "\[LongEqual]", "1"}],
+   TraditionalForm],
+  TraditionalForm,
+  Editable->True]], "Print",
+ CellChangeTimes->{3.662601092508971*^9, 3.6626011288149242`*^9}],
 
 Cell[BoxData[
  GraphicsBox[RasterBox[CompressedData["
@@ -17402,7 +17433,8 @@ leRP4FQAAAAAAElQphTlSxAqAAAAAIC2EtYnOBUAAGSX/x+Kqkq1
  CellChangeTimes->{
   3.6625796605541353`*^9, {3.6625797166947823`*^9, 3.662579771351446*^9}, 
    3.6625799597220907`*^9, {3.662580097156673*^9, 3.662580114545043*^9}, 
-   3.6626005597104673`*^9, 3.662600653270499*^9}]
+   3.6626005597104673`*^9, 3.662600653270499*^9, {3.662600980531348*^9, 
+   3.662601021564472*^9}, 3.662601099492412*^9, 3.6626011356709223`*^9}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -17459,23 +17491,24 @@ Cell[132780, 2696, 1225, 28, 77, "Input"],
 Cell[134008, 2726, 832, 23, 55, "Input"],
 Cell[CellGroupData[{
 Cell[134865, 2753, 755, 17, 77, "Input"],
-Cell[135623, 2772, 674196, 11066, 880, "Output"]
-}, Open  ]],
-Cell[809834, 13841, 92, 1, 32, "Input"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[809963, 13847, 114, 1, 65, "Section"],
-Cell[CellGroupData[{
-Cell[810102, 13852, 520, 17, 32, "Input"],
-Cell[810625, 13871, 5900, 108, 359, "Output"]
+Cell[135623, 2772, 674199, 11066, 880, "Output"]
+}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[816562, 13984, 1231, 33, 55, "Input"],
-Cell[817796, 14019, 2329, 44, 538, "Output"]
+Cell[809871, 13844, 171, 2, 65, "Section"],
+Cell[CellGroupData[{
+Cell[810067, 13850, 520, 17, 32, "Input"],
+Cell[810590, 13869, 5900, 108, 359, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[820162, 14068, 1186, 34, 99, "Input"],
-Cell[821351, 14104, 201151, 3300, 403, "Output"]
+Cell[816527, 13982, 1231, 33, 55, "Input"],
+Cell[817761, 14017, 2333, 44, 538, "Output"]
+}, Open  ]],
+Cell[820109, 14064, 244, 5, 51, "Text"],
+Cell[CellGroupData[{
+Cell[820378, 14073, 1507, 41, 165, "Input"],
+Cell[821888, 14116, 492, 17, 41, "Print"],
+Cell[822383, 14135, 201247, 3301, 403, "Output"]
 }, Open  ]]
 }, Open  ]]
 }
