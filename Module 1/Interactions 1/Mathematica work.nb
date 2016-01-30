@@ -1,0 +1,858 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     30278,        849]
+NotebookOptionsPosition[     28111,        766]
+NotebookOutlinePosition[     28449,        781]
+CellTagsIndexPosition[     28406,        778]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Setup", "Section",
+ CellChangeTimes->{{3.663082862683559*^9, 3.66308286456145*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.663085350919352*^9, 3.663085408614114*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Column", "@", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"ToString", "@", "i"}], "<>", "\"\<.  \>\""}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "21"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.66308286742179*^9, 3.663082953020533*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"1.  \"\>"},
+    {"\<\"2.  \"\>"},
+    {"\<\"3.  \"\>"},
+    {"\<\"4.  \"\>"},
+    {"\<\"5.  \"\>"},
+    {"\<\"6.  \"\>"},
+    {"\<\"7.  \"\>"},
+    {"\<\"8.  \"\>"},
+    {"\<\"9.  \"\>"},
+    {"\<\"10.  \"\>"},
+    {"\<\"11.  \"\>"},
+    {"\<\"12.  \"\>"},
+    {"\<\"13.  \"\>"},
+    {"\<\"14.  \"\>"},
+    {"\<\"15.  \"\>"},
+    {"\<\"16.  \"\>"},
+    {"\<\"17.  \"\>"},
+    {"\<\"18.  \"\>"},
+    {"\<\"19.  \"\>"},
+    {"\<\"20.  \"\>"},
+    {"\<\"21.  \"\>"}
+   },
+   DefaultBaseStyle->"Column",
+   GridBoxAlignment->{"Columns" -> {{Left}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Column"]], "Output",
+ CellChangeTimes->{{3.663082924564797*^9, 3.663082953257414*^9}}]
+}, Closed]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"niceForm", "[", 
+   RowBox[{"{", 
+    RowBox[{"x_", ",", "y_"}], "}"}], "]"}], ":=", 
+  RowBox[{"TraditionalForm", "[", 
+   RowBox[{
+    RowBox[{"x", " ", 
+     OverscriptBox["i", "^"]}], " ", "+", " ", 
+    RowBox[{"y", " ", 
+     OverscriptBox["j", "^"]}]}], "]"}]}], "\n", 
+ RowBox[{
+  RowBox[{"niceForm", "[", 
+   RowBox[{"{", 
+    RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}], "]"}], " ", ":=", " ", 
+  RowBox[{"TraditionalForm", "[", 
+   RowBox[{
+    RowBox[{"x", " ", 
+     OverscriptBox["i", "^"]}], " ", "+", " ", 
+    RowBox[{"y", " ", 
+     OverscriptBox["j", "^"]}], "+", 
+    RowBox[{"z", " ", 
+     OverscriptBox["k", "^"]}]}], "]"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.6630890048803062`*^9, 3.663089027590029*^9}, {
+  3.663089070397345*^9, 3.6630891264176598`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ihat", ":=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1"}], "}"}]}], ";", " ", 
+  RowBox[{"ihat3", ":=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"jhat", ":=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0"}], "}"}]}], ";", " ", 
+  RowBox[{"jhat3", ":=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"khat3", ":=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.663103863254393*^9, 3.6631039734455557`*^9}, {
+  3.663104008270792*^9, 3.6631040315794287`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2", "Section",
+ CellChangeTimes->{3.663088437502737*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{"2", " ", 
+   RowBox[{"Cos", "[", 
+    RowBox[{"75", "*", 
+     RowBox[{"Pi", "/", "180"}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.663088440690696*^9, 3.6630884799033527`*^9}}],
+
+Cell[BoxData["0.5176380902050414`"], "Output",
+ CellChangeTimes->{{3.663088465086275*^9, 3.663088480142695*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{"2", "*", "1", "*", " ", 
+   RowBox[{"Sin", "[", 
+    RowBox[{"75", "*", 
+     RowBox[{"Pi", "/", "180"}]}], "]"}], "*", "3"}], "]"}]], "Input",
+ CellChangeTimes->{{3.663088728217647*^9, 3.663088750135948*^9}}],
+
+Cell[BoxData["5.795554957734409`"], "Output",
+ CellChangeTimes->{3.6630887504402742`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["3", "Section",
+ CellChangeTimes->{{3.663088901911408*^9, 3.663088904202127*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"a", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "4", ",", "0"}], "}"}]}], ";", " ", 
+  RowBox[{"b", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     RowBox[{"-", "1"}], ",", "0"}], "}"}]}], ";", 
+  RowBox[{"c", "=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     RowBox[{"-", "5"}], ",", "0"}], "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.6630891423125753`*^9, 3.6630892030601473`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", 
+   RowBox[{"-", "5"}], ",", "0"}], "}"}]], "Output",
+ CellChangeTimes->{{3.66308916326888*^9, 3.663089171809746*^9}, 
+   3.663089203320149*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Norm", "[", 
+  RowBox[{"A", "+", "B"}], "]"}]], "Input",
+ CellChangeTimes->{{3.663088911079739*^9, 3.663088946635705*^9}, {
+   3.663089177516588*^9, 3.663089178007324*^9}, 3.663089332922174*^9}],
+
+Cell[BoxData["5"], "Output",
+ CellChangeTimes->{3.663088946907357*^9, 3.663089178463344*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"niceForm", "[", 
+  RowBox[{"a", "\[Cross]", "c"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6630891849594*^9, 3.663089216279158*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", "15"}], " ", 
+   OverscriptBox["k", "^"]}], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.66308918956518*^9, 3.663089216516036*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dot", "[", 
+  RowBox[{"a", ",", "b"}], "]"}]], "Input",
+ CellChangeTimes->{{3.663089233469062*^9, 3.663089243465432*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", "1"}]], "Output",
+ CellChangeTimes->{3.6630892449834213`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"niceForm", "[", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"a", "\[Cross]", "b"}], ")"}], "\[Cross]", "c"}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.6630892582077513`*^9, 3.663089274399971*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", "35"}], " ", 
+   OverscriptBox["i", "^"]}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.663089274853855*^9}]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["9", "Section",
+ CellChangeTimes->{3.6631036494289837`*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f1", "=", 
+   RowBox[{
+    NamespaceBox["LinguisticAssistant",
+     DynamicModuleBox[{Typeset`query$$ = "600N", Typeset`boxes$$ = 
+      TemplateBox[{"600", "\"N\"", "newtons", "\"Newtons\""}, "Quantity", 
+       SyntaxForm -> Mod], 
+      Typeset`allassumptions$$ = {{
+       "type" -> "Clash", "word" -> "N", "template" -> 
+        "Assuming \"${word}\" is ${desc1}. Use as ${desc2} instead", "count" -> 
+        "3", "Values" -> {{
+          "name" -> "Unit", "desc" -> "a unit", "input" -> "*C.N-_*Unit-"}, {
+          "name" -> "Variable", "desc" -> "a variable", "input" -> 
+           "*C.N-_*Variable-"}, {
+          "name" -> "BearingDirection", "desc" -> "a direction", "input" -> 
+           "*C.N-_*BearingDirection-"}}}, {
+       "type" -> "Unit", "word" -> "N", "template" -> 
+        "Assuming ${desc1} for \"${word}\". Use ${desc2} instead", "count" -> 
+        "4", "Values" -> {{
+          "name" -> "Newtons", "desc" -> "newtons", "input" -> 
+           "UnitClash_*N.*Newtons--"}, {
+          "name" -> "Nights", "desc" -> "nights", "input" -> 
+           "UnitClash_*N.*Nights--"}, {
+          "name" -> "Nepers", "desc" -> "nepers", "input" -> 
+           "UnitClash_*N.*Nepers--"}, {
+          "name" -> "NormalUnits", "desc" -> "normal", "input" -> 
+           "UnitClash_*N.*NormalUnits--"}}}}, Typeset`assumptions$$ = {}, 
+      Typeset`open$$ = {1, 2}, Typeset`querystate$$ = {
+      "Online" -> True, "Allowed" -> True, "mparse.jsp" -> 
+       0.667298`6.275864816697913, "Messages" -> {}}}, 
+      DynamicBox[ToBoxes[
+        AlphaIntegration`LinguisticAssistantBoxes["", 4, Automatic, 
+         Dynamic[Typeset`query$$], 
+         Dynamic[Typeset`boxes$$], 
+         Dynamic[Typeset`allassumptions$$], 
+         Dynamic[Typeset`assumptions$$], 
+         Dynamic[Typeset`open$$], 
+         Dynamic[Typeset`querystate$$]], StandardForm],
+       ImageSizeCache->{117., {9., 21.}},
+       TrackedSymbols:>{
+        Typeset`query$$, Typeset`boxes$$, Typeset`allassumptions$$, 
+         Typeset`assumptions$$, Typeset`open$$, Typeset`querystate$$}],
+      DynamicModuleValues:>{},
+      UndoTrackedVariables:>{Typeset`open$$}],
+     BaseStyle->{"Deploy"},
+     DeleteWithContents->True,
+     Editable->False,
+     SelectWithContents->True], "*", 
+    RowBox[{
+     RowBox[{"RotationMatrix", "[", 
+      RowBox[{"5", " ", 
+       RowBox[{"Pi", "/", "6"}]}], "]"}], ".", "ihat"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f2", "=", 
+   RowBox[{
+    NamespaceBox["LinguisticAssistant",
+     DynamicModuleBox[{Typeset`query$$ = "800N", Typeset`boxes$$ = 
+      TemplateBox[{"800", "\"N\"", "newtons", "\"Newtons\""}, "Quantity", 
+       SyntaxForm -> Mod], 
+      Typeset`allassumptions$$ = {{
+       "type" -> "Clash", "word" -> "N", "template" -> 
+        "Assuming \"${word}\" is ${desc1}. Use as ${desc2} instead", "count" -> 
+        "3", "Values" -> {{
+          "name" -> "Unit", "desc" -> "a unit", "input" -> "*C.N-_*Unit-"}, {
+          "name" -> "Variable", "desc" -> "a variable", "input" -> 
+           "*C.N-_*Variable-"}, {
+          "name" -> "BearingDirection", "desc" -> "a direction", "input" -> 
+           "*C.N-_*BearingDirection-"}}}, {
+       "type" -> "Unit", "word" -> "N", "template" -> 
+        "Assuming ${desc1} for \"${word}\". Use ${desc2} instead", "count" -> 
+        "4", "Values" -> {{
+          "name" -> "Newtons", "desc" -> "newtons", "input" -> 
+           "UnitClash_*N.*Newtons--"}, {
+          "name" -> "Nights", "desc" -> "nights", "input" -> 
+           "UnitClash_*N.*Nights--"}, {
+          "name" -> "Nepers", "desc" -> "nepers", "input" -> 
+           "UnitClash_*N.*Nepers--"}, {
+          "name" -> "NormalUnits", "desc" -> "normal", "input" -> 
+           "UnitClash_*N.*NormalUnits--"}}}}, Typeset`assumptions$$ = {}, 
+      Typeset`open$$ = {1, 2}, Typeset`querystate$$ = {
+      "Online" -> True, "Allowed" -> True, "mparse.jsp" -> 
+       0.705277`6.299904714663765, "Messages" -> {}}}, 
+      DynamicBox[ToBoxes[
+        AlphaIntegration`LinguisticAssistantBoxes["", 4, Automatic, 
+         Dynamic[Typeset`query$$], 
+         Dynamic[Typeset`boxes$$], 
+         Dynamic[Typeset`allassumptions$$], 
+         Dynamic[Typeset`assumptions$$], 
+         Dynamic[Typeset`open$$], 
+         Dynamic[Typeset`querystate$$]], StandardForm],
+       ImageSizeCache->{117., {9., 21.}},
+       TrackedSymbols:>{
+        Typeset`query$$, Typeset`boxes$$, Typeset`allassumptions$$, 
+         Typeset`assumptions$$, Typeset`open$$, Typeset`querystate$$}],
+      DynamicModuleValues:>{},
+      UndoTrackedVariables:>{Typeset`open$$}],
+     BaseStyle->{"Deploy"},
+     DeleteWithContents->True,
+     Editable->False,
+     SelectWithContents->True], "*", 
+    RowBox[{
+     RowBox[{"RotationMatrix", "[", 
+      RowBox[{"40", "*", 
+       RowBox[{"Pi", "/", "180"}]}], "]"}], ".", "ihat"}]}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.66310365594637*^9, 3.663103772939445*^9}, {
+  3.663103808181506*^9, 3.663103814352857*^9}, {3.66310403768381*^9, 
+  3.663104044172312*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"niceForm", "[", 
+  RowBox[{"N", "[", 
+   RowBox[{
+    RowBox[{"f1", "+", "f2"}], ",", "4"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.663103817139327*^9, 3.663103827213871*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    OverscriptBox["i", "^"], " ", 
+    RowBox[{"(", 
+     TemplateBox[{
+      RowBox[{"-", "814.23008774923146105811472792581074632752`4."}],"\"N\"",
+       "newtons","\"Newtons\""},
+      "QuantityTF"], ")"}]}], "+", 
+   RowBox[{
+    OverscriptBox["j", "^"], " ", 
+    RowBox[{"(", 
+     TemplateBox[{
+      "93.22031222451924010368021799257162906227`4.","\"N\"","newtons",
+       "\"Newtons\""},
+      "QuantityTF"], ")"}]}]}], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.663103822357066*^9, 3.6631038275861397`*^9}, 
+   3.663104046251039*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["10", "Section",
+ CellChangeTimes->{{3.663104073520809*^9, 3.663104079074848*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"a", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0", ",", "15"}], "}"}], 
+    NamespaceBox["LinguisticAssistant",
+     DynamicModuleBox[{Typeset`query$$ = "foot", Typeset`boxes$$ = 
+      TemplateBox[{
+        InterpretationBox["\[InvisibleSpace]", 1], "\"ft\"", "feet", 
+        "\"Feet\""}, "Quantity", SyntaxForm -> Mod], 
+      Typeset`allassumptions$$ = {{
+       "type" -> "Clash", "word" -> "foot", "template" -> 
+        "Assuming \"${word}\" is ${desc1}. Use as ${desc2} instead", "count" -> 
+        "4", "Values" -> {{
+          "name" -> "Unit", "desc" -> "a unit", "input" -> 
+           "*C.foot-_*Unit-"}, {
+          "name" -> "Anatomy", "desc" -> "an anatomical structure", "input" -> 
+           "*C.foot-_*Anatomy-"}, {
+          "name" -> "MathWorld", "desc" -> 
+           " referring to a mathematical definition", "input" -> 
+           "*C.foot-_*MathWorld-"}, {
+          "name" -> "Word", "desc" -> "a word", "input" -> 
+           "*C.foot-_*Word-"}}}}, Typeset`assumptions$$ = {}, 
+      Typeset`open$$ = {1, 2}, Typeset`querystate$$ = {
+      "Online" -> True, "Allowed" -> True, "mparse.jsp" -> 
+       0.626027`6.248138057853594, "Messages" -> {}}}, 
+      DynamicBox[ToBoxes[
+        AlphaIntegration`LinguisticAssistantBoxes["", 4, Automatic, 
+         Dynamic[Typeset`query$$], 
+         Dynamic[Typeset`boxes$$], 
+         Dynamic[Typeset`allassumptions$$], 
+         Dynamic[Typeset`assumptions$$], 
+         Dynamic[Typeset`open$$], 
+         Dynamic[Typeset`querystate$$]], StandardForm],
+       ImageSizeCache->{93., {9., 21.}},
+       TrackedSymbols:>{
+        Typeset`query$$, Typeset`boxes$$, Typeset`allassumptions$$, 
+         Typeset`assumptions$$, Typeset`open$$, Typeset`querystate$$}],
+      DynamicModuleValues:>{},
+      UndoTrackedVariables:>{Typeset`open$$}],
+     BaseStyle->{"Deploy"},
+     DeleteWithContents->True,
+     Editable->False,
+     SelectWithContents->True]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"b", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"10", ",", 
+      RowBox[{"-", "1"}], ",", "3"}], "}"}], 
+    NamespaceBox["LinguisticAssistant",
+     DynamicModuleBox[{Typeset`query$$ = "foot", Typeset`boxes$$ = 
+      TemplateBox[{
+        InterpretationBox["\[InvisibleSpace]", 1], "\"ft\"", "feet", 
+        "\"Feet\""}, "Quantity", SyntaxForm -> Mod], 
+      Typeset`allassumptions$$ = {{
+       "type" -> "Clash", "word" -> "foot", "template" -> 
+        "Assuming \"${word}\" is ${desc1}. Use as ${desc2} instead", "count" -> 
+        "4", "Values" -> {{
+          "name" -> "Unit", "desc" -> "a unit", "input" -> 
+           "*C.foot-_*Unit-"}, {
+          "name" -> "Anatomy", "desc" -> "an anatomical structure", "input" -> 
+           "*C.foot-_*Anatomy-"}, {
+          "name" -> "MathWorld", "desc" -> 
+           " referring to a mathematical definition", "input" -> 
+           "*C.foot-_*MathWorld-"}, {
+          "name" -> "Word", "desc" -> "a word", "input" -> 
+           "*C.foot-_*Word-"}}}}, Typeset`assumptions$$ = {}, 
+      Typeset`open$$ = {1, 2}, Typeset`querystate$$ = {
+      "Online" -> True, "Allowed" -> True, "mparse.jsp" -> 
+       0.47466`6.127927628392711, "Messages" -> {}}}, 
+      DynamicBox[ToBoxes[
+        AlphaIntegration`LinguisticAssistantBoxes["", 4, Automatic, 
+         Dynamic[Typeset`query$$], 
+         Dynamic[Typeset`boxes$$], 
+         Dynamic[Typeset`allassumptions$$], 
+         Dynamic[Typeset`assumptions$$], 
+         Dynamic[Typeset`open$$], 
+         Dynamic[Typeset`querystate$$]], StandardForm],
+       ImageSizeCache->{93., {9., 21.}},
+       TrackedSymbols:>{
+        Typeset`query$$, Typeset`boxes$$, Typeset`allassumptions$$, 
+         Typeset`assumptions$$, Typeset`open$$, Typeset`querystate$$}],
+      DynamicModuleValues:>{},
+      UndoTrackedVariables:>{Typeset`open$$}],
+     BaseStyle->{"Deploy"},
+     DeleteWithContents->True,
+     Editable->False,
+     SelectWithContents->True]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.663104085963562*^9, 3.663104125245268*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"niceForm", "[", 
+  RowBox[{"N", "[", 
+   RowBox[{
+    RowBox[{
+     NamespaceBox["LinguisticAssistant",
+      DynamicModuleBox[{Typeset`query$$ = "70lbs", Typeset`boxes$$ = 
+       TemplateBox[{"70", "\"lb\"", "pounds", "\"Pounds\""}, "Quantity", 
+        SyntaxForm -> Mod], 
+       Typeset`allassumptions$$ = {{
+        "type" -> "Unit", "word" -> "lbs", "template" -> 
+         "Assuming ${desc1} for \"${word}\". Use ${desc2} instead", "count" -> 
+         "4", "Values" -> {{
+           "name" -> "Pounds", "desc" -> "pounds\[Hyphen]mass", "input" -> 
+            "UnitClash_*lbs.*Pounds--"}, {
+           "name" -> "TroyPounds", "desc" -> "troy pounds", "input" -> 
+            "UnitClash_*lbs.*TroyPounds--"}, {
+           "name" -> "ApothecariesPounds", "desc" -> "apothecaries' pounds", 
+            "input" -> "UnitClash_*lbs.*ApothecariesPounds--"}, {
+           "name" -> "PoundsForce", "desc" -> "pounds\[Hyphen]force", "input" -> 
+            "UnitClash_*lbs.*PoundsForce--"}}}}, Typeset`assumptions$$ = {}, 
+       Typeset`open$$ = {1, 2}, Typeset`querystate$$ = {
+       "Online" -> True, "Allowed" -> True, "mparse.jsp" -> 
+        0.407599`6.061778103337196, "Messages" -> {}}}, 
+       DynamicBox[ToBoxes[
+         AlphaIntegration`LinguisticAssistantBoxes["", 4, Automatic, 
+          Dynamic[Typeset`query$$], 
+          Dynamic[Typeset`boxes$$], 
+          Dynamic[Typeset`allassumptions$$], 
+          Dynamic[Typeset`assumptions$$], 
+          Dynamic[Typeset`open$$], 
+          Dynamic[Typeset`querystate$$]], StandardForm],
+        ImageSizeCache->{115., {9., 21.}},
+        TrackedSymbols:>{
+         Typeset`query$$, Typeset`boxes$$, Typeset`allassumptions$$, 
+          Typeset`assumptions$$, Typeset`open$$, Typeset`querystate$$}],
+       DynamicModuleValues:>{},
+       UndoTrackedVariables:>{Typeset`open$$}],
+      BaseStyle->{"Deploy"},
+      DeleteWithContents->True,
+      Editable->False,
+      SelectWithContents->True], "*", 
+     RowBox[{"Normalize", "[", 
+      RowBox[{"b", "-", "a"}], "]"}]}], ",", "3"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.663104134844673*^9, 3.66310422734478*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    OverscriptBox["i", "^"], " ", 
+    RowBox[{"(", 
+     TemplateBox[{
+      "44.7213595499957939281834733746255247088`3.","\"lb\"","pounds",
+       "\"Pounds\""},
+      "QuantityTF"], ")"}]}], "+", 
+   RowBox[{
+    OverscriptBox["j", "^"], " ", 
+    RowBox[{"(", 
+     TemplateBox[{
+      RowBox[{"-", "4.47213595499957939281834733746255247088`3."}],"\"lb\"",
+       "pounds","\"Pounds\""},
+      "QuantityTF"], ")"}]}], "+", 
+   RowBox[{
+    OverscriptBox["k", "^"], " ", 
+    RowBox[{"(", 
+     TemplateBox[{
+      RowBox[{"-", "53.66563145999495271382016804955062965057`3."}],"\"lb\"",
+       "pounds","\"Pounds\""},
+      "QuantityTF"], ")"}]}]}], TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.6631041425529423`*^9, {3.663104190530549*^9, 3.663104227780918*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["11", "Section",
+ CellChangeTimes->{{3.66310493379711*^9, 3.663104933946735*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"a", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1.2", ",", "2", ",", 
+      RowBox[{"-", "1"}]}], "}"}], 
+    NamespaceBox["LinguisticAssistant",
+     DynamicModuleBox[{Typeset`query$$ = "meters", Typeset`boxes$$ = 
+      TemplateBox[{
+        InterpretationBox["\[InvisibleSpace]", 1], "\"m\"", "meters", 
+        "\"Meters\""}, "Quantity", SyntaxForm -> Mod], 
+      Typeset`allassumptions$$ = {{
+       "type" -> "Clash", "word" -> "meters", "template" -> 
+        "Assuming \"${word}\" is ${desc1}. Use as ${desc2} instead", "count" -> 
+        "2", "Values" -> {{
+          "name" -> "Unit", "desc" -> "a unit", "input" -> 
+           "*C.meters-_*Unit-"}, {
+          "name" -> "Word", "desc" -> "a word", "input" -> 
+           "*C.meters-_*Word-"}}}}, Typeset`assumptions$$ = {}, 
+      Typeset`open$$ = {1, 2}, Typeset`querystate$$ = {
+      "Online" -> True, "Allowed" -> True, "mparse.jsp" -> 
+       0.566451`6.204707341322925, "Messages" -> {}}}, 
+      DynamicBox[ToBoxes[
+        AlphaIntegration`LinguisticAssistantBoxes["", 4, Automatic, 
+         Dynamic[Typeset`query$$], 
+         Dynamic[Typeset`boxes$$], 
+         Dynamic[Typeset`allassumptions$$], 
+         Dynamic[Typeset`assumptions$$], 
+         Dynamic[Typeset`open$$], 
+         Dynamic[Typeset`querystate$$]], StandardForm],
+       ImageSizeCache->{86., {9., 21.}},
+       TrackedSymbols:>{
+        Typeset`query$$, Typeset`boxes$$, Typeset`allassumptions$$, 
+         Typeset`assumptions$$, Typeset`open$$, Typeset`querystate$$}],
+      DynamicModuleValues:>{},
+      UndoTrackedVariables:>{Typeset`open$$}],
+     BaseStyle->{"Deploy"},
+     DeleteWithContents->True,
+     Editable->False,
+     SelectWithContents->True]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"b", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1.8", ",", "1.0", ",", 
+      RowBox[{"-", "1.5"}]}], "}"}], 
+    NamespaceBox["LinguisticAssistant",
+     DynamicModuleBox[{Typeset`query$$ = "m", Typeset`boxes$$ = TemplateBox[{
+        InterpretationBox["\[InvisibleSpace]", 1], "\"m\"", "meters", 
+        "\"Meters\""}, "Quantity", SyntaxForm -> Mod], 
+      Typeset`allassumptions$$ = {{
+       "type" -> "Clash", "word" -> "m", "template" -> 
+        "Assuming \"${word}\" is ${desc1}. Use as ${desc2} instead", "count" -> 
+        "3", "Values" -> {{
+          "name" -> "Unit", "desc" -> "a unit", "input" -> "*C.m-_*Unit-"}, {
+          "name" -> "Character", "desc" -> "a character", "input" -> 
+           "*C.m-_*Character-"}, {
+          "name" -> "Gene", "desc" -> "a gene", "input" -> 
+           "*C.m-_*Gene-"}}}, {
+       "type" -> "Unit", "word" -> "m", "template" -> 
+        "Assuming ${desc1} for \"${word}\". Use ${desc2} instead", "count" -> 
+        "3", "Values" -> {{
+          "name" -> "Meters", "desc" -> "meters", "input" -> 
+           "UnitClash_*m.*Meters--"}, {
+          "name" -> "MinimsUS", "desc" -> "US minims of volume", "input" -> 
+           "UnitClash_*m.*MinimsUS--"}, {
+          "name" -> "Minutes", "desc" -> "minutes of time", "input" -> 
+           "UnitClash_*m.*Minutes--"}}}}, Typeset`assumptions$$ = {
+      "*C.m-_*Unit-"}, Typeset`open$$ = {1, 2}, Typeset`querystate$$ = {
+      "Online" -> True, "Allowed" -> True, "mparse.jsp" -> 
+       0.479266`6.132121613941683, "Messages" -> {}}}, 
+      DynamicBox[ToBoxes[
+        AlphaIntegration`LinguisticAssistantBoxes["", 4, Automatic, 
+         Dynamic[Typeset`query$$], 
+         Dynamic[Typeset`boxes$$], 
+         Dynamic[Typeset`allassumptions$$], 
+         Dynamic[Typeset`assumptions$$], 
+         Dynamic[Typeset`open$$], 
+         Dynamic[Typeset`querystate$$]], StandardForm],
+       ImageSizeCache->{86., {9., 21.}},
+       TrackedSymbols:>{
+        Typeset`query$$, Typeset`boxes$$, Typeset`allassumptions$$, 
+         Typeset`assumptions$$, Typeset`open$$, Typeset`querystate$$}],
+      DynamicModuleValues:>{},
+      UndoTrackedVariables:>{Typeset`open$$}],
+     BaseStyle->{"Deploy"},
+     DeleteWithContents->True,
+     Editable->False,
+     SelectWithContents->True]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r", "=", "a"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{
+    NamespaceBox["LinguisticAssistant",
+     DynamicModuleBox[{Typeset`query$$ = "800N", Typeset`boxes$$ = 
+      TemplateBox[{"800", "\"N\"", "newtons", "\"Newtons\""}, "Quantity", 
+       SyntaxForm -> Mod], 
+      Typeset`allassumptions$$ = {{
+       "type" -> "Clash", "word" -> "N", "template" -> 
+        "Assuming \"${word}\" is ${desc1}. Use as ${desc2} instead", "count" -> 
+        "3", "Values" -> {{
+          "name" -> "Unit", "desc" -> "a unit", "input" -> "*C.N-_*Unit-"}, {
+          "name" -> "Variable", "desc" -> "a variable", "input" -> 
+           "*C.N-_*Variable-"}, {
+          "name" -> "BearingDirection", "desc" -> "a direction", "input" -> 
+           "*C.N-_*BearingDirection-"}}}, {
+       "type" -> "Unit", "word" -> "N", "template" -> 
+        "Assuming ${desc1} for \"${word}\". Use ${desc2} instead", "count" -> 
+        "4", "Values" -> {{
+          "name" -> "Newtons", "desc" -> "newtons", "input" -> 
+           "UnitClash_*N.*Newtons--"}, {
+          "name" -> "Nights", "desc" -> "nights", "input" -> 
+           "UnitClash_*N.*Nights--"}, {
+          "name" -> "Nepers", "desc" -> "nepers", "input" -> 
+           "UnitClash_*N.*Nepers--"}, {
+          "name" -> "NormalUnits", "desc" -> "normal", "input" -> 
+           "UnitClash_*N.*NormalUnits--"}}}}, Typeset`assumptions$$ = {}, 
+      Typeset`open$$ = {1, 2}, Typeset`querystate$$ = {
+      "Online" -> True, "Allowed" -> True, "mparse.jsp" -> 
+       0.399979`6.053582183765102, "Messages" -> {}}}, 
+      DynamicBox[ToBoxes[
+        AlphaIntegration`LinguisticAssistantBoxes["", 4, Automatic, 
+         Dynamic[Typeset`query$$], 
+         Dynamic[Typeset`boxes$$], 
+         Dynamic[Typeset`allassumptions$$], 
+         Dynamic[Typeset`assumptions$$], 
+         Dynamic[Typeset`open$$], 
+         Dynamic[Typeset`querystate$$]], StandardForm],
+       ImageSizeCache->{117., {9., 21.}},
+       TrackedSymbols:>{
+        Typeset`query$$, Typeset`boxes$$, Typeset`allassumptions$$, 
+         Typeset`assumptions$$, Typeset`open$$, Typeset`querystate$$}],
+      DynamicModuleValues:>{},
+      UndoTrackedVariables:>{Typeset`open$$}],
+     BaseStyle->{"Deploy"},
+     DeleteWithContents->True,
+     Editable->False,
+     SelectWithContents->True], 
+    RowBox[{"Normalize", "[", 
+     RowBox[{"b", "-", "a"}], "]"}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.663104937215136*^9, 3.663105031308577*^9}, 
+   3.663105072895536*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"niceForm", "[", 
+  RowBox[{"N", "[", 
+   RowBox[{
+    RowBox[{"Round", "[", 
+     RowBox[{
+      RowBox[{"r", "\[Cross]", "f"}], ",", 
+      RowBox[{"10", "^", 
+       RowBox[{"-", "10"}]}]}], "]"}], ",", "5"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6631050405960217`*^9, 3.663105056535941*^9}, {
+  3.6631051225357428`*^9, 3.66310515951184*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    OverscriptBox["i", "^"], " ", 
+    RowBox[{"(", 
+     TemplateBox[{
+      RowBox[{"-", "1260.9766499826`5."}],
+       RowBox[{"\"m\"", "\[ThinSpace]", "\"N\""}],"meter newtons",
+       RowBox[{"\"Meters\"", " ", "\"Newtons\""}]},
+      "QuantityTF"], ")"}]}], "+", 
+   RowBox[{
+    OverscriptBox["j", "^"], " ", 
+    RowBox[{"(", 
+     TemplateBox[{
+      "0",RowBox[{"\"m\"", "\[ThinSpace]", "\"N\""}],"meter newtons",
+       RowBox[{"\"Meters\"", " ", "\"Newtons\""}]},
+      "QuantityTF"], ")"}]}], "+", 
+   RowBox[{
+    OverscriptBox["k", "^"], " ", 
+    RowBox[{"(", 
+     TemplateBox[{
+      RowBox[{"-", "1513.1719799791`5."}],
+       RowBox[{"\"m\"", "\[ThinSpace]", "\"N\""}],"meter newtons",
+       RowBox[{"\"Meters\"", " ", "\"Newtons\""}]},
+      "QuantityTF"], ")"}]}]}], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.663105058946473*^9, 3.663105084336821*^9}, {
+  3.663105140580917*^9, 3.663105162227832*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 911},
+WindowMargins->{{Automatic, 1046}, {-9, Automatic}},
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 89, 1, 65, "Section"],
+Cell[672, 25, 216, 5, 32, "Input",
+ InitializationCell->True],
+Cell[CellGroupData[{
+Cell[913, 34, 296, 8, 32, "Input"],
+Cell[1212, 44, 753, 28, 369, "Output"]
+}, Closed]],
+Cell[1980, 75, 842, 25, 68, "Input",
+ InitializationCell->True],
+Cell[2825, 102, 731, 23, 77, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3593, 130, 62, 1, 65, "Section"],
+Cell[CellGroupData[{
+Cell[3680, 135, 231, 6, 32, "Input"],
+Cell[3914, 143, 112, 1, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4063, 149, 254, 6, 32, "Input"],
+Cell[4320, 157, 89, 1, 32, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4458, 164, 86, 1, 65, "Section"],
+Cell[CellGroupData[{
+Cell[4569, 169, 432, 13, 32, "Input"],
+Cell[5004, 184, 193, 5, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5234, 194, 218, 4, 32, "Input"],
+Cell[5455, 200, 92, 1, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5584, 206, 155, 3, 32, "Input"],
+Cell[5742, 211, 188, 5, 51, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5967, 221, 145, 3, 32, "Input"],
+Cell[6115, 226, 89, 2, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6241, 233, 217, 6, 32, "Input"],
+Cell[6461, 241, 165, 5, 50, "Output"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[6675, 252, 64, 1, 51, "Section"],
+Cell[6742, 255, 5090, 109, 85, "Input"],
+Cell[CellGroupData[{
+Cell[11857, 368, 206, 5, 32, "Input"],
+Cell[12066, 375, 599, 18, 50, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12714, 399, 87, 1, 65, "Section"],
+Cell[12804, 402, 4080, 90, 85, "Input"],
+Cell[CellGroupData[{
+Cell[16909, 496, 2162, 44, 47, "Input"],
+Cell[19074, 542, 822, 25, 51, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19945, 573, 86, 1, 65, "Section"],
+Cell[20034, 576, 6664, 143, 144, "Input"],
+Cell[CellGroupData[{
+Cell[26723, 723, 377, 10, 32, "Input"],
+Cell[27103, 735, 980, 27, 51, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
