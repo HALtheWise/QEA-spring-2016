@@ -1,0 +1,140 @@
+\documentclass{tufte-handout}
+\usepackage{graphicx}
+\usepackage{exercise}
+\usepackage{enumerate}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+
+\title{Module 1 Exercises: Interactions 2.1}
+\begin{document}
+
+\maketitle
+
+%\vspace{0.1in}
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%
+%% SECTION 1: VECTOR OPERATIONS
+%%%%%%%%%%%%%%%%%%%%%%%
+%
+\section{How to do Interactions 2.1}
+
+This set of exercises is meant to provide you with enough stuff so that you can begin to deal with more of the pieces of the boat project. It's intended to be less than nine hours, with the idea that you will transition to working more explicitly on boat stuff: with the pieces here you should be in good shape to at least get some initial traction on the first pieces of the boat code.
+
+As before, we have some advice:\begin{enumerate}
+\item Start on this assignment today.  9 hours spread over a few days is not unreasonable.  9 hours on one day is insane and highly unproductive.
+\item Watch the videos. There aren't a lot of them, so it shouldn't take too painfully long.
+\item Talk to a ninja or an instructor if you are confused.
+\item Take an interative approach.
+\item {\it Please do not bang your head on a question.  If you are lost on a question, ask for help!}
+\end{enumerate}
+
+\clearpage
+
+\section{Thinking about distributed forces}
+
+We often determine the equivalent force for distributed forces (body and contact forces) by thinking about how big the total force is, and where the force is applied.  For example, gravity is a distributed force that acts at the center of mass; buoyancy is a distributed force that acts at the center of buoyancy; drag acts a the center of pressure, etc.  
+
+Watch the videos on distributed forces before you wrestle with the following problems:
+
+\subsection{Center of Mass: Conceptual}  
+\begin{enumerate}
+
+\item In 1968, Dick Fosbury won a high jump gold medal at the Summer Olympic Games using his revolutionary new technique appropriately called the ``Fosbury Flop.'' The complete biomechanics is quite involved but do some research and then discuss what role the position the center of mass plays in the jump. 
+\item The diagram below shows three different shapes cut out of a metal plate.  Mark the approximate location of the COM on each.
+\centerline{\includegraphics[width=6in]{figs/COMExamples.pdf}}
+
+\subsection{COM: Calculations}
+\item Locate the center of mass of the plate and the solid from Shapes II: Derivatives and Integrals in Multiple Dimensions 22(a) and 22(b).
+\item Define two rectangular blocks and a cylinder.  Combine them in some way to make your own object. Determine the center of mass of your object analytically (by integrals and/or tables). Verify your answer using SoildWorks. 
+
+\centerline{\includegraphics[height=1in]{figs/cylinderandblock1.png} \includegraphics[height=1in]{figs/cylinderandblock2.png}}
+
+\end{enumerate}
+
+
+
+\subsection{Distributed Forces: Conceptual} 
+\be
+\item A child places a toy submarine into a tub of water. The sub has a mass of 500 grams, and is has a total volume of 1 liter (i.e., when fully submerged it displaces a liter of water). What could you put inside the sub to make it sink to the bottom of the tub? Explain your answer(s).
+\be
+\item One liter of water.
+\item 500 grams of water.
+\item 700 grams of water
+\item You don't need to put anything in.  It already displaces more water than it weighs so it?s already on its way down. 
+\ee
+\item Homer was out fishing. To make room for his catch, he threw is anchor overboard. The anchor sunk to the bottom of the sea. Did the sea level a) rise, b) fall, or c) stay the same after he dropped it in? 
+
+\clearpage
+
+\item An autonomous underwater vehicle (AUV) can be modeled as three, hollow cylinders in the arrangement shown (front view) below. The ends of the cylinders are sealed at the ends by circular flat plates.  Assume that the volume and mass of the struts is negligible compared to the volume and mass of the cylinders.
+
+The diagram below shows the cross-section of the AUV under two conditions: first, with the AUV floating at equilibrium, and second, shortly after the AUV has been disturbed from its equilibrium by a wave impact.  In both cases, you can assume that the AUV is not moving at $t=0$.
+
+\centerline{\includegraphics[width=6in]{figs/AUV.pdf}}
+
+Please do the following for this AUV.
+\begin{enumerate}
+\item There are two distributed forces acting on the AUV: gravity and buoyancy. Sketch the distribution of these forces using about 10-20 arrows for gravity, and 10-20 arrows for buoyancy.  Do this for both cases.
+\item For both cases, mark the location of the COM.
+\item For both cases, mark the location of the center of buoyancy.
+\item Comment on what both the net force and the net moment acting on the AUV are in both cases.
+\end{enumerate}
+\ee
+
+\clearpage
+
+\subsection{Distributed Forces: Computational}
+
+\begin{enumerate}[resume]
+\item The diagram below shows the distributed lift force acting on a wing. The lift force varies as a function of position along the wing according to 
+$$L(x) = 200 \sqrt{ 1-\frac{x^2}{17}}$$
+where $L(x)$ is the force per unit length along the wing. The weight of the wing is 1600 N. Gravity points in the downward vertical direction. 
+Find the equivalent lift force (magnitude and location). 
+ \centerline{\includegraphics[width=3in]{figs/airplanewing.png}}
+
+ 
+ \item Remember the AUV in the problem above?  Well, let's make it a bit more real.  We'll make the cylinders out of aluminum, 2 m in length with a wall thickness of 1 cm (both on the walls and on the caps) and inner diameter of 15 cm.  Again, assume that the struts have negligible weight and volume.
+\begin{enumerate}
+\item Determine the location of the center of buoyancy when the AUV is not loaded.  
+\item Sketch how the AUV will float when it is not loaded.
+\item What is the maximum load the AUV can carry without sinking?
+\ee
+
+\item Consider an ABS plastic body that is a solid, half-cylinder (length = 1 m, radius = 15 cm) with matching half-hemispherical (radius = 15 cm) ends.
+
+\centerline{\includegraphics[width=3in]{figs/ABSBoat.png}}
+
+\be
+\item  Determine the location of the center of mass of the body analytically. 
+\item Verify your answer using Solidworks. Locate the center of buoyancy, assuming that the waterline goes to the top surface. \item Now consider the body to be a steel, thin-walled shell with the outer dimensions as above and wall thickness = 0.1cm. Where is the shell's center of mass? 
+\item Where is the center of buoyancy? 
+\item Will it float in water? 
+\item How will the centers of mass and buoyancy change if several steel ball bearings (radius = 0.2cm) are placed inside the shell? 
+\end{enumerate}
+
+
+\section{Project Plan}
+
+The rest of this assignment was at least meant to be short enough that you would have time to do some stuff for the project.  At a minimum, you should come to class on Thursday with a plan for your project that addresses the following questions:
+
+\begin{enumerate}
+\item What is your proposed schedule?
+\item What do you see as ``doable'' tasks right now?  Identify which parts of the project seem tractable, and discuss how you will tackle them.
+\item What do you see as the major roadblocks (conceptually or technically) right now?  Make a list of questions that you have.
+\end{enumerate}
+
+In addition to a project plan and decomposition, we would love to see you make some concrete progress before class -- but only if that's tractable given time constraints.
+
+\end{enumerate}
+
+
+ 
+
+\end{document}
