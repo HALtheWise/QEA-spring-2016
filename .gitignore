@@ -1,7 +1,43 @@
 
-# Created by https://www.gitignore.io/api/atex,python,matlab,sublimetext
+# Created by https://www.gitignore.io/api/latex,python,matlab,sublimetext
 
-#!! ERROR: atex is undefined. Use list command to see defined gitignore types !!#
+### LaTeX ###
+*.acn
+*.acr
+*.alg
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.lof
+*.log
+*.lot
+*.maf
+*.mtc
+*.mtc0
+*.nav
+*.nlo
+*.out
+*.pdfsync
+*.ps
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.xdy
+*.tdo
+
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
@@ -57,12 +93,25 @@ coverage.xml
 
 # Django stuff:
 *.log
+local_settings.py
+
+# Flask instance folder
+instance/
 
 # Sphinx documentation
 docs/_build/
 
 # PyBuilder
 target/
+
+# IPython Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# dotenv
+.env
 
 
 ### Matlab ###
@@ -82,6 +131,9 @@ target/
 
 # Simulink Code Generation
 slprj/
+
+# Session info
+octave-workspace
 
 
 ### SublimeText ###
