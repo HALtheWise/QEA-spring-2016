@@ -1,0 +1,415 @@
+\documentclass{tufte-handout}
+\usepackage{graphicx}
+\usepackage{url, amsmath,enumitem}
+\usepackage{hyperref}
+\hypersetup{urlcolor=magenta}
+\hypersetup{colorlinks=true}
+
+\usepackage[iso,american]{isodate}
+\usepackage{fancyhdr}
+\fancypagestyle{firstpage}{
+  \rhead{Quantitative Engineering Analysis \linebreak
+  \textit{Version: \today}}
+}
+
+\title{Introduction to Matrices}
+\author{QEA}
+\date{Spring 2016}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{firstpage}
+
+\section{What is this about?}
+
+The main mathematical tool that you will learn and use in this module is linear algebra. Much of linear algebra involves operations with matrices and vectors. While most of the examples you will encounter in this module will be from image processing, the tools you learn in this module are useful in a wide range of applications, including statistics, signal processing and numerous other topics. In this building block, you will learn the basics of matrix algebra, which will be the major tool you will use in Module 2. We shall start by introducing matrix operations on vectors, followed by matrix operations on other matrices. 
+
+\section{Resources to read and watch}
+
+\begin{itemize}
+\item Introduction to Linear Algebra, by Strang
+\item Homebrew videos
+\begin{itemize}
+\item \href{https://youtu.be/XSNHG1Vkcik}{Matrices operating on vectors}
+\item \href{https://youtu.be/T5Larkrb430}{Matrices operating on vectors (example)}
+\item \href{https://youtu.be/_cQq85Th6nI}{Matrices operating on matrices}
+\end{itemize}
+\end{itemize}
+
+
+\section{Matrices act on vectors}
+\newthought{A matrix looks like an array, but it operates on vectors (and other matrices, as we will soon see)}: when we multiply a vector by a matrix, it transforms the vector into a new vector. Therefore, when we say "a matrix operates on a vector", we mean that the matrix multiplies the vector. Notation-wise, we use bold upper-case letters, e.g. $\mathbf{A}$, to represent a matrix and bold lower-case letters to represent a vector, e.g. $\mathbf{v}$.
+
+Matrices and vectors come in different shapes and sizes. Like arrays, we talk about matrices as having rows and columns. A general matrix $\mathbf{A}$ has $m$ rows and $n$ columns, and we refer to this as an $m \times n$ matrix. Vectors are then examples of matrices: they either have a single row or a single column, and we often refer to them as being a {\it row vector} or a {\it column vector}.
+
+Matrices can only multiply vectors of a certain size and produce vectors of a certain size: an $m \times n$ matrix can only operate on a column vector of size $ n \times 1$, and will produce an output vector which is a column vector of size $ m \times 1$. Likewise, matrices can only multiply other matrices of a certain size: an $m \times n$ matrix can only act on a matrix of size $ n \times k$, and will produce an output matrix of size $ m \times k$. These basic properties will become clearer when we look at an example.
+
+\section{Example}
+Consider the $3 \times 2$ matrix $\mathbf{A}$,
+\[ \mathbf{A} =
+\left[\begin{array}{rr}
+2 & 1 \\
+3 & -1 \\
+0 & 4
+\end{array}\right]
+\]
+and the input vector $\mathbf{v}$
+\[ \mathbf{v} =
+\left[\begin{array}{rr}
+-2 \\
+1
+\end{array}\right].
+\]
+The output vector $\mathbf{w}$ is computed as follows
+\[ \mathbf{w} =
+\left[\begin{array}{rr}
+2 & 1 \\
+3 & -1 \\
+0 & 4
+\end{array}\right]
+\left[\begin{array}{rr}
+-2  \\
+1
+\end{array}\right]
+=
+\left[
+\begin{array}{cc}
+(2)(-2) + (1)(1) \\
+(3)(-2) + (-1)(1) \\
+(0)(-2) + (4)(1)
+\end{array}
+\right]
+=
+\left[
+\begin{array}{rr}
+-3 \\
+-7 \\
+4
+\end{array}
+\right]
+\]
+There are two main ways to think about this multiplication. The most common view is to treat each entry of the new vector as a dot product between a row of the matrix and the column vector. The second approach is to view the output vector as a linear combination of the columns of the matrix.
+
+As we mentioned earlier, $n\times m$ matrices can multiply $m\times 1$ vectors and produce $n\times 1$ vectors. Consider  a generic $n \times m$ matrix $\mathbf{A}$
+\begin{align*}
+\mathbf{A} =
+\begin{bmatrix}
+    a_{11} & a_{12}& \cdots & a_{1m}\\
+    a_{21} & a_{22} & \cdots & a_{2m}  \\
+    \vdots & \cdots & \ddots & \vdots\\
+    a_{n1} & a_{n2} & \cdots & a_{nm}
+  \end{bmatrix}
+\end{align*}
+where the $ij$-th entry of this matrix, $a_{ij}$ defined above, is the entry corresponding to the $i$-th row and $j$-th column.
+You can multiply an  $m\times 1$ vector $\mathbf{v}$ by this matrix. Define the vector $\mathbf{v}$ as follows,
+\begin{align*}
+\mathbf{v } =
+\begin{bmatrix}
+    v_{1}\\
+    v_{2}\\
+    \vdots\\
+    v_{m}
+  \end{bmatrix}
+\end{align*}
+Now define another vector $\mathbf{w}$ which is the product of $\mathbf{A}$ and $\mathbf{v}$, i.e. $\mathbf{w} = \mathbf{Av}$. If we define
+\begin{align*}
+\mathbf{w} =
+\begin{bmatrix}
+    w_{1}\\
+    w_{2}\\
+    \vdots\\
+    w_{m}
+  \end{bmatrix}
+\end{align*}
+then the $i$-th entry of $\mathbf{w}$, is given by the following sum
+\begin{align*}
+w_{i} = a_{i1}v_{1} + a_{i2}v_2 \cdots a_{im}v_m = \sum_{j = 1}^m a_{ij}v_{j}
+\end{align*}
+
+\section{Matrix Operations in MATLAB}
+MATLAB has a wide variety of tools to deal with matrix operations. You should open MATLAB on your computers and work through the following examples. To define the matrix $\mathbf{A}$ in MATLAB you can type the following command:
+\begin{verbatim}
+>> A = [2 1; 3 -1; 0 4]
+\end{verbatim}
+Note that the semi-colon ends a row and begins a new row. To define the vector $\mathbf{v}$ in MATLAB you can type the following command:
+\begin{verbatim}
+>>  v = [-2; 1]
+\end{verbatim}
+To multiply $\mathbf{A}$ and the vector $\mathbf{v}$ in MATLAB you can type the following command:
+\begin{verbatim}
+>>  w = A*v
+\end{verbatim}
+
+\section{Extracting sub-matrices in MATLAB}
+Let's say we want to extract the 2nd row of the matrix $\mathbf{A}$. In MATLAB you can type the following command:
+\begin{verbatim}
+>> A(2,:)
+\end{verbatim}
+Note that the colon in this case simply grabs all of the columns. Alternatively, you can type the following command:
+\begin{verbatim}
+>> A(2,1:2)
+\end{verbatim}
+which will grab the first and second column, or
+\begin{verbatim}
+>> A(2,1:end)
+\end{verbatim}
+which will grab all the columns from 1 to the last column. If you want to grab the first and third rows only, you can type the following command:
+\begin{verbatim}
+>> A([1 3],:)
+\end{verbatim}
+or just
+\begin{verbatim}
+>> A(1:2:3,:)
+\end{verbatim}
+
+\section{Exercises}
+\begin{enumerate}[resume]
+\item Using the definitions for $\mathbf{A}$ and $\mathbf{v}$ from above, please solve the following using MATLAB. Do the answers match what you expect?
+\begin{enumerate}
+\item {\tt  >>  A*v}
+\item {\tt  >>  A(1:2,:)*v}
+\item {\tt  >> A(:, 2:4)*v}
+\end{enumerate}
+\item Find a $2 \times 2$ matrix which when multiplying a vector $\mathbf{v}$ results in the same vector $\mathbf{v}$.
+\item Find a $3 \times 3$ matrix which when multiplying a vector $\mathbf{v}$ keeps the first two entries of $\mathbf{v}$ the same and replaces the third entry with a zero.
+\item Find a $4 \times 4$ matrix which when multiplying a vector $\mathbf{v}$ swaps the first and second entries of the vector.
+\end{enumerate}
+
+\newthought{Matrixes as tranformation operators}
+
+When matrixes operate on spatial position vectors, the vector which results is another spatial position vector.  The original spatial position has been 'transformed' into another position.  In particular, there are specific matrixes which accomplish particular desired transformations and are used in many different disciplines, we will use a couple of these as examples here.
+
+\begin{marginfigure}
+\includegraphics[width=6cm]{Transformer.jpg}
+\caption{Tranformations, not Transformers.}
+\end{marginfigure}
+
+
+\subsection{Identity}  Ok, this is the easy one.  The matrix
+
+\begin{equation}
+{\bf A} = \left( \begin{array}{ccc}
+   1 & 0 & 0 \\
+   0 & 1 & 0 \\
+   0 & 0 & 1
+ \end{array} \right)
+\end{equation}
+when it acts on the position vector $(x,y,z)$, will reproduce the same position.  Convince yourself this is true!
+
+\subsection{Scaling}  Another important and simple operation is to be able to take a vector $(x,y,z)$ and scale (increase or decrease its length) it by an overall multiplicative factor while maintaining its direction.
+\begin{enumerate}[resume]
+\item  Consider the vector $(2,0,0)$.  Thinking about how the identity matrix acts on this vector, propose a $3\times 3$ matrix which scales this vector by a factor of $3$ to the vector $(6,0,0)$.
+\item  Now think about the vector $(0,2,0)$.  What $3\times 3$ matrix can you propose which scales this vector by a factor of $3$.
+\item  And finally, find the $3\times 3$ matrix which scales the vector $(0,0,2)$ by a factor of $3$.
+\item  Putting it together!  What $3\times 3$ matrix will scale the vector $(2,2,2)$ by a factor of $3$.
+\item  What if you want to scale the $x$ component differently than the $y$ component?  Write down the $3\times 3$ matrix which scales the $x$ component by $3$ and the $y$ component by $5$ and leaves the $z$ component the same.
+\end{enumerate}
+
+One thing you might notice in working with the scaling is that all these operations only involve elements of your transformation matrix which lie on the diagonal.  If you think about what the diagonal elements represent, they map the $i^{th}$ component of the input vector onto the $i^{th}$ component of the output vector, so this makes sense that diagonal elements would be heavily associated with scaling.  The off-diagonal elements, in contrast, represent the mapping of the $i^{th}$ component of the input vector onto the $j^{th}$ component of the output vector, which will change the direction of the vector!
+
+\subsection{Rotations} To start our exploration of the effects of off-diagonal elements, let's consider some simple examples.
+\begin{enumerate}[resume]
+\item  Operate on the vectors $(1,0,0)$, $(0,1,0)$ and $(0,0,1)$ with the following matrix:
+\begin{equation}
+{\bf A} = \left( \begin{array}{ccc}
+   0 & 1 & 0 \\
+   -1 & 0 & 0 \\
+   0 & 0 & 1
+ \end{array} \right)
+\end{equation}
+What transformation does this matrix represent? (ie. can you capture in a single concept what this matrix does to any vector?  Hint:  look at the section heading).
+\item  Similarly, consider the operation of the following matrix on the vectors $(1,0,0)$, $(0,1,0)$ and $(0,0,1)$:
+\begin{equation}
+{\bf A} = \left( \begin{array}{ccc}
+   1 & 0 & 0 \\
+   0 & 0 & -1 \\
+   0 & 1 & 0
+ \end{array} \right)
+\end{equation}
+What transformation does this matrix represent?
+\item  Lastly, what transformation does this matrix represent?:
+\begin{equation}
+{\bf A} = \left( \begin{array}{ccc}
+   0 & 0 & 1 \\
+   0 & 1 & 0 \\
+   -1 & 0 & 0
+ \end{array} \right)
+\end{equation}
+\end{enumerate}
+So, hopefully by this point you have convinced yourself that the above matrixes transform vectors by rotating them through an angle of 90 degrees about some coordinate axis.  This is accomplished by the presence of the 1's and -1's in the off-diagonal positions which replace the $i^{th}$ component of the vector with the $j^{th}$ and vice versa with a negative sign.  What if we want to rotate the vector through an angle which is not 90 degrees?  We want to move some proportion of of the $i^{th}$ component:  how much depends on the angle!  Consider the following matrix:
+\begin{equation}
+\mathbf{R} =  \left( \begin{array}{ccc}
+   \cos \theta & \sin \theta & 0  \\
+   -\sin\theta & \cos \theta & 0  \\
+   0  & 0  &  1
+ \end{array} \right)
+\end{equation}
+\begin{enumerate}[resume]
+\item  What is this matrix equal to for $\theta = 0$?  What is it equal to for $\theta = 90$ degrees?
+\item  If $\theta = \pi/2$ what is the result of operating with this matrix on the vector $(1,0,0)$?
+\item  If, for any $\theta$, we operate on the vector $(a,b,c)$, show that the length (norm) of the vector is unchanged by this operation!   (Hint:  remember that $\cos^2\theta + \sin^2\theta = 1$).
+\item  What transformation does this matrix represent?  Can you, by analogy, construct the rotation matrixes for rotation by an angle $\theta$ around the other two coordinate axes?
+\end{enumerate}
+
+
+\section{Matrices acting on matrices}
+
+Matrices can also operate on matrices to produce other matrices. In general, when you multiply a matrix $\mathbf{A}$ with another matrix $\mathbf{B}$, you need the matrix on the left side of the product to have the same number of columns as the number of rows in the matrix on the right side. In other words if $\mathbf{A}$ is $n\times m$, and $\mathbf{B}$ is $p\times q$, you need $m = p$ for the product $\mathbf{C} = \mathbf{AB}$ to be defined. The product results in a new matrix $\mathbf{C}$ which is $n\times q$. The $q$ columns of the product matrix $\mathbf{C}$ are precisely the $q$ vectors that would result from multiplying $\mathbf{A}$ with the vectors formed by the columns of $\mathbf{B}$.
+
+\subsection{Example 1}
+Consider again the $2 \times 2$ matrix $\mathbf{A}$,
+\[ \mathbf{A} =
+\left[\begin{array}{rr}
+2 & 1 \\
+3 & -1
+\end{array}\right]
+\]
+and another matrix $\mathbf{B}$
+\[ \mathbf{B} =
+\left[\begin{array}{rr}
+1 & 5 \\
+-2 & 3
+\end{array}\right]
+\]
+The product of the two $\mathbf{C} = \mathbf{AB}$ is computed as follows
+\[ \mathbf{C} =
+\left[\begin{array}{rr}
+2 & 1 \\
+3 & -1
+\end{array}\right]
+\left[\begin{array}{rr}
+1 & 5 \\
+-2 & 3
+\end{array}\right]
+=
+\left[
+\begin{array}{cc}
+(2)(1) + (1)(-2) & (2)(5) + (1)(3) \\
+(3)(1) + (-1)(-2)  & (3)(5)  + (-1)(3)
+\end{array}
+\right]
+=
+\left[
+\begin{array}{rr}
+0 & 13 \\
+5 & 12
+\end{array}
+\right]
+\]
+
+
+\subsection{Example 2}
+
+As a second example consider the matrices $\mathbf{A}$ and $\mathbf{B}$ defined below, and let the product $\mathbf{C} = \mathbf{AB}$.
+
+\begin{align*}
+\mathbf{A} &=
+\begin{bmatrix}
+1 & 2 \\
+3 & 2 \\
+4 & 1
+\end{bmatrix}
+\\
+\mathbf{B} &=
+\begin{bmatrix}
+1 & 4 \\
+2 & 3
+\end{bmatrix}
+\\
+\mathbf{C} &=
+\begin{bmatrix}
+(1)(1) + (2)(2) & (1)(4)+(2)(3) \\
+(3)(1) + (2)(2) & (3)(4)+(2)(3) \\
+(4)(1) + (1)(2) & (4)(4)+(1)(3)
+\end{bmatrix}
+ = \begin{bmatrix}
+5 & 10 \\
+7 & 18 \\
+6 & 19
+\end{bmatrix}
+\end{align*}
+
+More generally, consider an $n\times m$ matrix $\mathbf{A}$, a $m \times q$ matrix $\mathbf{B}$ and a matrix $\mathbf{C} = \mathbf{AB}$. The dimensions of $\mathbf{C}$ are $m \times q$. Let's define the entries of these matrices as follows:
+\begin{align*}
+\mathbf{A} &=
+\begin{bmatrix}
+    a_{11} & a_{12}& \cdots & a_{1m}\\
+    a_{21} & a_{22} & \cdots & a_{2m}  \\
+    \vdots & \cdots & \ddots & \vdots\\
+    a_{n1} & a_{n2} & \cdots & a_{nm}
+  \end{bmatrix}
+\\
+ \mathbf{B} &=
+\begin{bmatrix}
+    b_{11} & b_{12}& \cdots & b_{1q}\\
+    b_{21} & b_{22} & \cdots & b_{2q}  \\
+    \vdots & \cdots & \ddots & \vdots\\
+    b_{m1} & b_{m2} & \cdots & b_{mq}
+  \end{bmatrix}
+\\
+ \mathbf{C} &=
+\begin{bmatrix}
+    c_{11} & c_{12}& \cdots & c_{1q}\\
+    c_{21} & c_{22} & \cdots & c_{2q}  \\
+    \vdots & \cdots & \ddots & \vdots\\
+    c_{n1} & c_{n2} & \cdots & c_{nq}
+  \end{bmatrix}
+\end{align*}
+The $ij$-th entry of $\mathbf{C}$, denoted by $c_{ij}$ is defined as follows
+\begin{align*}
+c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} +\cdots + a_{im}b_{mj} = \sum_{k = 1}^m a_{ik}b_{jk}
+\end{align*}
+
+
+
+One way of envisioning matrix multiplication is if we consider the columns of input matrix $\mathbf{B}$ as a set of column vectors, we can operate upon these column vectors one at a time with matrix $\mathbf{A}$ and the resulting vectors will be the corresponding columns of the output matrix $\mathbf{C}$.
+
+Consider the following matrixes:
+\[ \mathbf{A} =
+\left[\begin{array}{rr}
+-2 & 4 \\
+0 & 3
+\end{array}\right]
+\]
+\[ \mathbf{B} =
+\left[\begin{array}{rr}
+5 & -3 \\
+-1 & -1
+\end{array}\right]
+\]
+\begin{enumerate}[resume]
+\item  Find the matrix product $\mathbf{A} \mathbf{B}$.
+\item  Find the matrix product $\mathbf{B} \mathbf{A}$
+\end{enumerate}
+Note that these two products are NOT equal.  In general, matrix multiplication, unlike scalar multiplication, is NOT commutative.  In other words, in general $\mathbf{A} \mathbf{B} \neq \mathbf{B} \mathbf{A}$.  However, the distributive property IS valid for matrixes:  $\mathbf{A} (\mathbf{B} + \mathbf{C}) = \mathbf{A} \mathbf{B} + \mathbf{A} \mathbf{C}$ so long as we keep the order of the multiplication the same $(\mathbf{B} + \mathbf{C})\mathbf{A} = \mathbf{B} \mathbf{A} + \mathbf{C} \mathbf{A}$.  In order to demonstrate this we need to define matrix addition.  Matrix addition is the same as array addition:  you simply add the corresponding components together:  if $\mathbf{A} + \mathbf{B} = \mathbf{C}$ then $a_{ij} + b_{ij} = c_{ij}$.
+
+In addition to matrixes $\mathbf{A}$ and $ \mathbf{B}$ defined above, consider matrix
+\[ \mathbf{C} =
+\left[\begin{array}{rr}
+-5 & -1 \\
+-3 & 2
+\end{array}\right]
+\]
+
+\begin{enumerate}[resume]
+\item  Calculate  $\mathbf{A} (\mathbf{B} + \mathbf{C}) $
+\item  Calculate  $\mathbf{A} \mathbf{B} + \mathbf{A} \mathbf{C}$  is it equal to your previous answer?
+\end{enumerate}
+
+Now let's consider these principles using the transformation matrixes we worked with above.
+
+\begin{enumerate}[resume]
+\item  Hold a closed book in front of you, with the top of the book towards the ceiling ($+z = (0,0,1)$ direction) and the front of the book pointed towards you ($+x = (1,0,0)$ direction), which leaves the opening side of the book pointing towards your right ($+y = (0,1,0)$).
+    \begin{enumerate}
+    \item  Rotate the book by 90 degrees clockwise about the $+x$ axis, then from this position, rotate the book by 90 degrees clockwise about the $+z$ axis.  Which direction is the cover of the book facing now?
+    \item  Return to the starting position.  Now rotate the book by 90 degrees clockwise about the $+z$ axis, and then from this position, rotate the book by 90 degrees clockwise about the $+x$ axis.  Which direction is the cover of the book facing now?  Is it the same as in part a?
+    \item  The cover of the book is originally pointed towards $(1,0,0)$.  Operate on this vector with the appropriate sequence of rotation matrixes from above to reproduce your motions from part a.  Do you end up with the correct final cover direction?
+    \item  Operate on the $(1,0,0)$ vector with the appropriate sequence of rotation matrixes to reproduce the motions from part b.  Do you end up with the correct final cover direction?
+    \item  From either of your answers to part c or part d, try, instead of operating on the $(1,0,0)$ vector sequentially with one rotation matrix and then the other, take the product of the two rotation matrixes first, and then operate on the $(1,0,0)$ with the resultant matrix.  Does this reproduce your answer?  What if you take the product the other way?
+    \end{enumerate}
+\item  If we want to rotate a vector $\mathbf{v}$ by an angle $\theta$ about the $z$ axis to get a vector $\mathbf{w}$, which matrix $\mathbf{R}$ do we use? Oops, now we changed our mind and decided we didn't want to do that after all.  What matrix $\mathbf{S}$ can we multiply $\mathbf{w}$ by to get back to $\mathbf{v}$?  $\mathbf{R}$ and $\mathbf{S}$ are known as inverses of each other.  What happens if we multiple these two matrixes together?
+\end{enumerate}
+
+
+\end{document} 
