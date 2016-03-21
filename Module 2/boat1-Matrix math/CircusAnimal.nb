@@ -1,6 +1,12 @@
 Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.667560039457119*^9, 3.667560051869068*^9}}],
 
 Cell[CellGroupData[{
+
 Cell["Import Data", "Section",
  CellChangeTimes->{{3.6675578512519093`*^9, 3.6675578546829453`*^9}}],
 
@@ -787,6 +793,34 @@ Cell[BoxData[
 
 Cell[CellGroupData[{
 
+Cell["Import 3", "Section",
+ CellChangeTimes->{{3.667560026073509*^9, 3.6675600308020887`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"import", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<rabbit.pov\>\"", ",", "\"\<Text\>\""}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.667560055696829*^9, 3.6675600707584057`*^9}, {
+  3.667560105657061*^9, 3.667560201487355*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringCases", "[", 
+  RowBox[{"import", ",", 
+   RowBox[{"\"\<<\>\"", "~~", "_", "~~", "\"\<>\>\""}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.667560228881846*^9, 3.6675602667655993`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{{3.6675602589418783`*^9, 3.667560267225924*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell["Do Calculations", "Section",
  CellChangeTimes->{{3.667557856905191*^9, 3.6675578594625177`*^9}}],
 
@@ -978,7 +1012,7 @@ $CellContext`translationMatrix], $CellContext`janimal]; Graphics[
    3.667557896163763*^9}, {3.667557936425535*^9, 3.667557961808627*^9}, {
    3.667557997574489*^9, 3.6675580117554893`*^9}, 3.66755816199199*^9}]
 }, Open  ]]
-}, Open  ]]
+}, Closed]]
 },
 WindowSize->{1920, 1014},
 WindowMargins->{{0, Automatic}, {Automatic, 0}},
