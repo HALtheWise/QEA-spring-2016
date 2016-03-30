@@ -1,5 +1,14 @@
 Notebook[{
 Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{
+  "This", " ", "code", " ", "is", " ", "explicitly", " ", "not", " ", 
+   "subject", " ", "to", " ", "my", " ", "GitHub", " ", "liscense", " ", 
+   RowBox[{"agreement", ".", " ", "Distribution"}], " ", "is", " ", 
+   RowBox[{"unlimited", "."}]}], " ", "*)"}]], "Input",
+ CellChangeTimes->{{3.6683424348264*^9, 3.6683424877723017`*^9}}],
+
+Cell[BoxData[
  RowBox[{
   RowBox[{"SetDirectory", "[", 
    RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}]], "Input",
@@ -50,26 +59,21 @@ Cell[BoxData[{
        RowBox[{"0", ",", 
         RowBox[{"{", 
          RowBox[{"n", ",", "m"}], "}"}]}], "]"}]}], ";", "\n", 
-     RowBox[{"Do", "[", "\[IndentingNewLine]", 
+     RowBox[{"Table", "[", "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{
         RowBox[{
          RowBox[{"imageData", "[", 
           RowBox[{"[", 
            RowBox[{
-            RowBox[{"xytran", "[", 
-             RowBox[{"[", 
-              RowBox[{"i", ",", "2"}], "]"}], "]"}], ",", 
-            RowBox[{"xytran", "[", 
-             RowBox[{"[", 
-              RowBox[{"i", ",", "1"}], "]"}], "]"}]}], "]"}], "]"}], "=", 
-         RowBox[{"xytran", "[", 
-          RowBox[{"[", 
-           RowBox[{"i", ",", "3"}], "]"}], "]"}]}], ";"}], 
-       "\[IndentingNewLine]", ",", 
+            RowBox[{"i", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], ",", 
+            RowBox[{"i", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "]"}], "=", 
+         RowBox[{"i", "[", 
+          RowBox[{"[", "3", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", ",", 
        RowBox[{"{", 
-        RowBox[{"i", ",", 
-         RowBox[{"Length", "@", "xytran"}]}], "}"}]}], "]"}], ";", 
+        RowBox[{"i", ",", "xytran"}], "}"}]}], "]"}], ";", 
      "\[IndentingNewLine]", "imageData"}]}], "\[IndentingNewLine]", 
    "]"}]}]}], "Input",
  InitializationCell->True,
@@ -82,7 +86,7 @@ Cell[BoxData[{
    3.668261790116209*^9, 3.668261797768512*^9}, {3.6682618336172647`*^9, 
    3.668261836585367*^9}, {3.668262136112483*^9, 3.6682621636616497`*^9}, {
    3.668262223390649*^9, 3.668262225424164*^9}, {3.6682744458550673`*^9, 
-   3.668274447209536*^9}}],
+   3.668274447209536*^9}, {3.668341644713932*^9, 3.668341677668898*^9}}],
 
 Cell["\<\
 Because images are lists of rows, this intensities list traverses one row at \
@@ -159,10 +163,6 @@ Cell[CellGroupData[{
 
 Cell["Your code", "Subsection",
  CellChangeTimes->{{3.668261679214508*^9, 3.668261680377784*^9}}],
-
-Cell[BoxData[
- RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}]], "Input",
- CellChangeTimes->{{3.668262078613649*^9, 3.668262088853161*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -16717,7 +16717,8 @@ Cell[BoxData[
  CellChangeTimes->{{3.668261895133381*^9, 3.668261936264439*^9}, {
   3.66826211204429*^9, 3.668262118812258*^9}, {3.668262243255561*^9, 
   3.668262243405869*^9}, {3.6682743757979927`*^9, 3.668274399506164*^9}, {
-  3.6682744841526747`*^9, 3.668274492382568*^9}}],
+  3.6682744841526747`*^9, 3.668274492382568*^9}, {3.668341720048423*^9, 
+  3.668341728151284*^9}}],
 
 Cell[CellGroupData[{
 
@@ -25987,12 +25988,13 @@ eHSf6zzpSG/1+c7HjdNufoHaof8FGIkYJw==
    3.6682619137091007`*^9, 3.668261946361126*^9, {3.6682620174175053`*^9, 
    3.6682620238798857`*^9}, 3.668262073052217*^9, {3.668262108342107*^9, 
    3.668262121804454*^9}, {3.668262234236548*^9, 3.668262246143446*^9}, {
-   3.668274479189129*^9, 3.668274495491726*^9}}]
+   3.668274479189129*^9, 3.668274495491726*^9}, {3.668341684514971*^9, 
+   3.668341730822434*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{808, 911},
-WindowMargins->{{408, Automatic}, {Automatic, -10}},
+WindowMargins->{{398, Automatic}, {Automatic, -8}},
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->"Default.nb"
 ]
