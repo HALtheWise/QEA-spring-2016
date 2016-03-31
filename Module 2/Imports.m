@@ -109,3 +109,32 @@ circular[[All,1;;halfn[[2]]]]=l[[All,1;;halfn[[2]]]];
 circular[[All,-halfn[[2]];;-1]]=l[[All,-halfn[[2]];;-1]];
 Return@circular;
 ]
+
+
+(* ::Section:: *)
+(*Image Transformers*)
+
+
+Clear@unconvert
+unconvert[tranxypos_,intensities_]:=Module[{m,n,xytran,imageData},
+{m,n}=ImageDimensions[picture];
+xytran=Transpose[Ceiling[tranxypos]];
+xytran[[All,3]]=intensities;
+xytran=Cases[xytran,{x_,y_,_}/;(1<=x<= m&&1<=y<=n)];
+imageData=ConstantArray[0,{n,m}];
+Table[
+imageData[[i[[2]],i[[1]]]]=i[[3]];
+,{i,xytran}];
+imageData
+]
+
+
+Clear[convert];
+convert[picture_]:=Module[{m,n,intensities,xydata},
+{m,n}=ImageDimensions[picture];
+(* intensities is put into a global variable, which isn't optimal, but works *)
+intensities = Flatten[ImageData[ColorConvert[picture,"Grayscale"]]];
+(* m is width, n is height *)
+xydata=Transpose@Flatten[Table[{x,y,1},{y,1,n},{x,1,m}],1];
+{xydata,intensities}
+]
