@@ -782,13 +782,11 @@ Cell[TextData[{
 solvers given. Notice that I use x and y instead of ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["x", "1"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+   SubscriptBox["x", "1"], TraditionalForm]]],
  " and ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["x", "2"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+   SubscriptBox["x", "2"], TraditionalForm]]],
  ", simply for brevity."
 }], "Text",
  CellChangeTimes->{{3.668624410443821*^9, 3.668624465634655*^9}}],
@@ -839,8 +837,7 @@ Cell[TextData[{
       {"1"},
       {
        RowBox[{"3", "/", "2"}]}
-     }], ")"}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+     }], ")"}], TraditionalForm]]],
  ", an erroneous typo."
 }], "Text",
  CellChangeTimes->{{3.668624362880846*^9, 3.6686244044521017`*^9}}],
@@ -963,10 +960,9 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Part", "::", "partw"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Part \[NoBreak]\\!\\(\\*RowBox[{\\\"1\\\"}]\\)\[NoBreak] \
-of \[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \\\"}\\\"}]\\)\[NoBreak] does not \
+   RowBox[{"Part", "::", "partw"}], "MessageName"], ":", 
+  " ", "\<\"Part \[NoBreak]\\!\\(\\*RowBox[{\\\"1\\\"}]\\)\[NoBreak] of \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \\\"}\\\"}]\\)\[NoBreak] does not \
 exist. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
 ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
 ButtonData:>\\\"paclet:ref/message/General/partw\\\", ButtonNote -> \
@@ -976,16 +972,14 @@ ButtonData:>\\\"paclet:ref/message/General/partw\\\", ButtonNote -> \
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"ReplaceAll", "::", "reps"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"\[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \
-RowBox[{RowBox[{\\\"{\\\", \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", \\\"1\\\
-\", \\\"\[RightDoubleBracket]\\\"}], \\\"}\\\"}]\\)\[NoBreak] is neither a \
-list of replacement rules nor a valid dispatch table, and so cannot be used \
-for replacing. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
-ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/message/ReplaceAll/reps\\\", ButtonNote -> \
-\\\"ReplaceAll::reps\\\"]\\)\"\>"}]], "Message", "MSG",
+   RowBox[{"ReplaceAll", "::", "reps"}], "MessageName"], ":", 
+  " ", "\<\"\[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", \
+\\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", \\\"1\\\", \\\"\
+\[RightDoubleBracket]\\\"}], \\\"}\\\"}]\\)\[NoBreak] is neither a list of \
+replacement rules nor a valid dispatch table, and so cannot be used for \
+replacing. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\
+\\\", ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/ReplaceAll/reps\\\
+\", ButtonNote -> \\\"ReplaceAll::reps\\\"]\\)\"\>"}]], "Message", "MSG",
  CellChangeTimes->{3.668624578451686*^9}],
 
 Cell[BoxData[
@@ -1097,18 +1091,15 @@ that ",
  Cell[BoxData[
   FormBox[
    RowBox[{"h", "=", 
-    FractionBox["3", "2"]}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+    FractionBox["3", "2"]}], TraditionalForm]]],
  ", but it takes some thought to realize that the result is no solution \
 because ",
  Cell[BoxData[
   FormBox[
-   FractionBox["n", "0"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+   FractionBox["n", "0"], TraditionalForm]]],
  " is undefined for nonzero ",
  Cell[BoxData[
-  FormBox["n", TraditionalForm]],
-  FormatType->"TraditionalForm"],
+  FormBox["n", TraditionalForm]]],
  ". On the other hand, if ",
  Cell[BoxData[
   FormBox[
@@ -1119,8 +1110,7 @@ because ",
  ", then the y value is ",
  Cell[BoxData[
   FormBox[
-   FractionBox["0", "0"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+   FractionBox["0", "0"], TraditionalForm]]],
  ", which allows for infinitely many solutions."
 }], "Text",
  CellChangeTimes->{{3.668624767091155*^9, 3.668624943498864*^9}}],
@@ -1308,8 +1298,7 @@ hand, cursory visual inspection reveals the answers are ",
  Cell[BoxData[
   FormBox[
    RowBox[{"(", 
-    RowBox[{"One", ",", " "}]}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+    RowBox[{"One", ",", " "}]}], TraditionalForm]]],
  "none, many). I\[CloseCurlyQuote]ll come back and fix this if I have time.\n\
 Lesson learned: Don\[CloseCurlyQuote]t do elimination by computer!"
 }], "Text",
@@ -1594,9 +1583,17 @@ Cell[BoxData[
   3.668633074052546*^9}}]
 }, Open  ]],
 
-Cell["Result: ", "Text",
+Cell["My manual calculation agrees.", "Text",
  CellChangeTimes->{{3.668627958342547*^9, 3.668627963478559*^9}, 
-   3.668631692820187*^9}],
+   3.668631692820187*^9, {3.6687009189212933`*^9, 3.668700924938816*^9}, {
+   3.6687009709001083`*^9, 3.6687009718869267`*^9}}],
+
+Cell["\<\
+This next problem encapsulates both the second and third examples (they\
+\[CloseCurlyQuote]re identical).\
+\>", "Text",
+ CellChangeTimes->{{3.668700926797297*^9, 3.668700934807287*^9}, {
+  3.6687009754152193`*^9, 3.668700984959094*^9}}],
 
 Cell[CellGroupData[{
 
@@ -1625,9 +1622,8 @@ Cell[BoxData[{
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"LUDecomposition", "::", "sing"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Matrix \[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \
+   RowBox[{"LUDecomposition", "::", "sing"}], "MessageName"], ":", 
+  " ", "\<\"Matrix \[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \
 RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"1\\\", \\\",\\\", \\\"1\\\", \
 \\\",\\\", \\\"1\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\
 \"2\\\", \\\",\\\", \\\"1\\\", \\\",\\\", RowBox[{\\\"-\\\", \\\"1\\\"}]}], \
@@ -1690,10 +1686,13 @@ Cell[BoxData[
  CellChangeTimes->{3.6686319893823633`*^9, 3.668633078230995*^9}]
 }, Open  ]],
 
-Cell["Result: ", "Text",
+Cell["My manual calculation agrees.", "Text",
  CellChangeTimes->{{3.668627965986586*^9, 3.668627972302319*^9}, 
-   3.668631695398657*^9}]
+   3.668631695398657*^9, {3.668700989823378*^9, 3.668700993399398*^9}, {
+   3.668701100742881*^9, 3.668701102043826*^9}}]
 }, Open  ]],
+
+Cell["", "Section"],
 
 Cell[CellGroupData[{
 
@@ -1758,10 +1757,9 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Part", "::", "partw"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Part \[NoBreak]\\!\\(\\*RowBox[{\\\"1\\\"}]\\)\[NoBreak] \
-of \[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \\\"}\\\"}]\\)\[NoBreak] does not \
+   RowBox[{"Part", "::", "partw"}], "MessageName"], ":", 
+  " ", "\<\"Part \[NoBreak]\\!\\(\\*RowBox[{\\\"1\\\"}]\\)\[NoBreak] of \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \\\"}\\\"}]\\)\[NoBreak] does not \
 exist. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
 ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
 ButtonData:>\\\"paclet:ref/message/General/partw\\\", ButtonNote -> \
@@ -2045,8 +2043,8 @@ Cell[BoxData[
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{959, 1014},
-WindowMargins->{{Automatic, -240}, {0, Automatic}},
+WindowSize->{959, 1013},
+WindowMargins->{{Automatic, -9}, {Automatic, -8}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
