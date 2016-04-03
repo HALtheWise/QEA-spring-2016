@@ -727,11 +727,10 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Solve", "::", "svars"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Equations may not give solutions for all \\\"solve\\\" \
-variables. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\
-\\\", ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/Solve/svars\\\", \
+   RowBox[{"Solve", "::", "svars"}], "MessageName"], ":", 
+  " ", "\<\"Equations may not give solutions for all \\\"solve\\\" variables. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/Solve/svars\\\", \
 ButtonNote -> \\\"Solve::svars\\\"]\\)\"\>"}]], "Message", "MSG",
  CellChangeTimes->{3.668542675778947*^9}],
 
@@ -770,6 +769,934 @@ Cell["Electronics", "Section",
 
 Cell[CellGroupData[{
 
+Cell["Types of Solutions", "Section",
+ CellChangeTimes->{{3.668623991442099*^9, 3.6686240114663982`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solving with Elimination", "Subsection",
+ CellChangeTimes->{{3.668624012803542*^9, 3.668624018784439*^9}}],
+
+Cell[TextData[{
+ "This function carries out rotely the elimination algorithm for 2-d equation \
+solvers given. Notice that I use x and y instead of ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "1"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "2"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", simply for brevity."
+}], "Text",
+ CellChangeTimes->{{3.668624410443821*^9, 3.668624465634655*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "@", "elim2"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"elim2", "[", 
+   RowBox[{"eq1_", ",", "eq2_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"soleq1", ",", "soleq2", ",", "xval", ",", "yval"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"soleq1", "=", 
+      RowBox[{
+       RowBox[{"Solve", "[", 
+        RowBox[{"eq1", ",", 
+         RowBox[{"{", "x", "}"}]}], "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"soleq2", "=", 
+      RowBox[{"eq2", "/.", "soleq1"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"yval", "=", 
+      RowBox[{"y", "/.", 
+       RowBox[{
+        RowBox[{"Solve", "[", 
+         RowBox[{"soleq2", ",", "y"}], "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"xval", "=", 
+      RowBox[{
+       RowBox[{"soleq1", "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "2"}], "]"}], "]"}], "/.", 
+       RowBox[{"y", "\[Rule]", "yval"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"xval", ",", "yval"}], "}"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}]}], "Input",
+ CellChangeTimes->{{3.6686240428949013`*^9, 3.668624120543398*^9}, {
+  3.668624152796557*^9, 3.6686242816072073`*^9}, {3.668624324225312*^9, 
+  3.668624324302581*^9}}],
+
+Cell[TextData[{
+ "Note that the solution given in the BB is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"1"},
+      {
+       RowBox[{"3", "/", "2"}]}
+     }], ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", an erroneous typo."
+}], "Text",
+ CellChangeTimes->{{3.668624362880846*^9, 3.6686244044521017`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"elim2", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"2", "x"}], "+", 
+      RowBox[{"3", "y"}]}], "==", "6"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"4", "x"}], "+", 
+      RowBox[{"9", "y"}]}], "\[Equal]", "15"}]}], "]"}], "//", 
+  "MatrixForm"}]], "Input",
+ CellChangeTimes->{{3.668624285874209*^9, 3.66862431798251*^9}, {
+  3.668624353530553*^9, 3.668624355324834*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {
+       FractionBox["3", "2"]},
+      {"1"}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+        "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.668624318778343*^9, 3.668624355670233*^9}}]
+}, Open  ]],
+
+Cell["This equation has infinitely many solutions:", "Text",
+ CellChangeTimes->{{3.6686244802846413`*^9, 3.668624494331746*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"elim2", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"x", "+", 
+      RowBox[{"2", "y"}]}], "\[Equal]", "1"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"2", "x"}], "+", 
+      RowBox[{"4", "y"}]}], "\[Equal]", "2"}]}], "]"}], "//", 
+  "MatrixForm"}]], "Input",
+ CellChangeTimes->{{3.668624285874209*^9, 3.66862431798251*^9}, {
+  3.668624353530553*^9, 3.668624355324834*^9}, {3.668624503099185*^9, 
+  3.668624513620356*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {
+       RowBox[{"1", "-", 
+        RowBox[{"2", " ", "y"}]}]},
+      {"y"}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+        "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.6686245141744623`*^9}]
+}, Open  ]],
+
+Cell["\<\
+The result here states that as long as y==y (trivially true) and x==1-2y, the \
+equations are satisfied.\
+\>", "Text",
+ CellChangeTimes->{{3.668624529647354*^9, 3.668624554201182*^9}}],
+
+Cell["This equation has no solutions.", "Text",
+ CellChangeTimes->{{3.668624557484556*^9, 3.668624565230907*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"elim2", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"x", "+", 
+      RowBox[{"2", "y"}]}], "\[Equal]", "1"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"2", "x"}], "+", 
+      RowBox[{"4", "y"}]}], "\[Equal]", "1"}]}], "]"}], "//", 
+  "MatrixForm"}]], "Input",
+ CellChangeTimes->{{3.668624285874209*^9, 3.66862431798251*^9}, {
+   3.668624353530553*^9, 3.668624355324834*^9}, {3.668624503099185*^9, 
+   3.668624513620356*^9}, 3.668624577876959*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(\\*RowBox[{\\\"1\\\"}]\\)\[NoBreak] \
+of \[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \\\"}\\\"}]\\)\[NoBreak] does not \
+exist. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/partw\\\", ButtonNote -> \
+\\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.668624578413025*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"ReplaceAll", "::", "reps"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"\[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", \\\"1\\\
+\", \\\"\[RightDoubleBracket]\\\"}], \\\"}\\\"}]\\)\[NoBreak] is neither a \
+list of replacement rules nor a valid dispatch table, and so cannot be used \
+for replacing. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/ReplaceAll/reps\\\", ButtonNote -> \
+\\\"ReplaceAll::reps\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.668624578451686*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {
+       RowBox[{"1", "-", 
+        RowBox[{"2", " ", 
+         RowBox[{"(", 
+          RowBox[{"y", "/.", "\[VeryThinSpace]", 
+           RowBox[{
+            RowBox[{"{", "}"}], "\[LeftDoubleBracket]", "1", 
+            "\[RightDoubleBracket]"}]}], ")"}]}]}]},
+      {
+       RowBox[{"y", "/.", "\[VeryThinSpace]", 
+        RowBox[{
+         RowBox[{"{", "}"}], "\[LeftDoubleBracket]", "1", 
+         "\[RightDoubleBracket]"}]}]}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+        "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.668624578479095*^9}]
+}, Open  ]],
+
+Cell["\<\
+As expected, warnings are thrown and a nonsensical result is returned. In \
+particular, the first solution to an equation with no solutions doesn\
+\[CloseCurlyQuote]t exist. I\[CloseCurlyQuote]d like the error to be more \
+intuitive, but this works.\
+\>", "Text",
+ CellChangeTimes->{{3.668624594411192*^9, 3.668624642203455*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solving for h, k", "Subsection",
+ CellChangeTimes->{{3.668624656920405*^9, 3.668624661122345*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"elim2", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"x", "+", 
+      RowBox[{"h", " ", "y"}]}], "\[Equal]", "1"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"2", "x"}], "+", 
+      RowBox[{"3", "y"}]}], "\[Equal]", "k"}]}], "]"}], "//", 
+  "MatrixForm"}]], "Input",
+ CellChangeTimes->{{3.668624665662016*^9, 3.668624686050783*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {
+       RowBox[{"1", "-", 
+        FractionBox[
+         RowBox[{"h", " ", 
+          RowBox[{"(", 
+           RowBox[{"2", "-", "k"}], ")"}]}], 
+         RowBox[{
+          RowBox[{"-", "3"}], "+", 
+          RowBox[{"2", " ", "h"}]}]]}]},
+      {
+       FractionBox[
+        RowBox[{"2", "-", "k"}], 
+        RowBox[{
+         RowBox[{"-", "3"}], "+", 
+         RowBox[{"2", " ", "h"}]}]]}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+        "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.668624680583694*^9, 3.6686246863128233`*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Interpreting this result is a little hoakey. In particular, it is clear \
+that ",
+ StyleBox["something ",
+  FontSlant->"Italic"],
+ "interesting happens when ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"h", "=", 
+    FractionBox["3", "2"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", but it takes some thought to realize that the result is no solution \
+because ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox["n", "0"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is undefined for nonzero ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". On the other hand, if ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"h", "=", 
+    RowBox[{
+     RowBox[{
+      FractionBox["3", "2"], "&&", "k"}], "=", "2"}]}], TraditionalForm]]],
+ ", then the y value is ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox["0", "0"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", which allows for infinitely many solutions."
+}], "Text",
+ CellChangeTimes->{{3.668624767091155*^9, 3.668624943498864*^9}}],
+
+Cell["\<\
+Amazingly, this code was written once, then applied to all of the cases \
+without needing to be tested, altered, or generalized. I think that\
+\[CloseCurlyQuote]s interesting.\
+\>", "Text",
+ CellChangeTimes->{{3.668624945406567*^9, 3.6686250032631893`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Three variables", "Subsection",
+ CellChangeTimes->{{3.668625104691861*^9, 3.668625107322638*^9}}],
+
+Cell["\<\
+This code is a pretty simple extension of the stuff above, but demonstrates \
+the added complexity from solving higher-order equations using elimination.\
+\>", "Text",
+ CellChangeTimes->{{3.668625311486361*^9, 3.668625342023047*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "@", "elim3"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"elim3", "[", 
+   RowBox[{"eq1_", ",", "eq2_", ",", "eq3_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"soleq1", "=", 
+      RowBox[{
+       RowBox[{"Solve", "[", 
+        RowBox[{"eq1", ",", "x"}], "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"soleq2", "=", 
+      RowBox[{
+       RowBox[{"Solve", "[", 
+        RowBox[{
+         RowBox[{"eq2", "/.", "soleq1"}], ",", "y"}], "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"zval", "=", 
+      RowBox[{"z", "/.", 
+       RowBox[{
+        RowBox[{"Solve", "[", 
+         RowBox[{
+          RowBox[{"eq3", "/.", 
+           RowBox[{"Join", "[", 
+            RowBox[{"soleq1", ",", "soleq2"}], "]"}]}], ",", "z"}], "]"}], 
+        "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"yval", "=", 
+      RowBox[{
+       RowBox[{"soleq2", "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "2"}], "]"}], "]"}], "/.", 
+       RowBox[{"z", "\[Rule]", "zval"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"xval", "=", 
+      RowBox[{
+       RowBox[{"soleq1", "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "2"}], "]"}], "]"}], "/.", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"z", "\[Rule]", "zval"}], ",", 
+         RowBox[{"y", "\[Rule]", "yval"}]}], "}"}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"xval", ",", "yval", ",", "zval"}], "}"}]}]}], 
+   "\[IndentingNewLine]", "]"}]}]}], "Input",
+ CellChangeTimes->{{3.6686240428949013`*^9, 3.668624120543398*^9}, {
+  3.668624152796557*^9, 3.6686242816072073`*^9}, {3.668624324225312*^9, 
+  3.668624324302581*^9}, {3.6686251377734528`*^9, 3.668625300801696*^9}, {
+  3.668625387749517*^9, 3.668625438067882*^9}, {3.668625648427767*^9, 
+  3.668625681062763*^9}, {3.6686257123746634`*^9, 3.6686257145507507`*^9}}],
+
+Cell["\<\
+When I fed in the equations in the given order, this code broke. I suspect \
+that this is the primary reason elimination isn\[CloseCurlyQuote]t a good way \
+for computers to solve these things.\
+\>", "Text",
+ CellChangeTimes->{{3.66862541817595*^9, 3.668625481839571*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"elim3", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"x", "+", "y", "+", "z"}], "\[Equal]", "6"}], ",", 
+   RowBox[{
+    RowBox[{"x", "-", 
+     RowBox[{"2", "z"}]}], "\[Equal]", "4"}], ",", 
+   RowBox[{
+    RowBox[{"y", "+", "z"}], "\[Equal]", "4"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.668625305429274*^9, 3.668625307103754*^9}, {
+   3.668625347891571*^9, 3.668625379263311*^9}, {3.668625441866588*^9, 
+   3.668625443711114*^9}, 3.668626683521429*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2", ",", "5", ",", 
+   RowBox[{"-", "1"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.668625379990736*^9, 3.668625409778623*^9}, 
+   3.668625444102312*^9, 3.668626684055821*^9}]
+}, Open  ]],
+
+Cell["Result: 1 solution", "Text",
+ CellChangeTimes->{{3.668625492121221*^9, 3.6686255057557793`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"elim3", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"x", "+", "y", "+", "z"}], "\[Equal]", 
+    RowBox[{"-", "6"}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"2", "x"}], "+", "y", "-", "z"}], "\[Equal]", "18"}], ",", 
+   RowBox[{
+    RowBox[{"y", "-", 
+     RowBox[{"2", "z"}]}], "\[Equal]", "4"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.668625305429274*^9, 3.668625307103754*^9}, {
+   3.668625347891571*^9, 3.668625379263311*^9}, {3.668625441866588*^9, 
+   3.668625443711114*^9}, {3.668625522031783*^9, 3.668625528759198*^9}, 
+   3.6686265013243647`*^9, {3.668626675761087*^9, 3.6686266869137287`*^9}, {
+   3.668626730059746*^9, 3.668626733791236*^9}, 3.6686271327257643`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["52", "5"], ",", 
+   RowBox[{"-", 
+    FractionBox["48", "5"]}], ",", 
+   RowBox[{"-", 
+    FractionBox["34", "5"]}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6686255291402063`*^9, 3.668626509576003*^9, {3.668626676547688*^9, 
+   3.66862668737256*^9}, {3.668626727699792*^9, 3.6686267341728497`*^9}, 
+   3.668626966142527*^9, {3.668627128822631*^9, 3.668627142017214*^9}}]
+}, Open  ]],
+
+Cell["Result : 1 solution", "Text",
+ CellChangeTimes->{{3.668625537537077*^9, 3.668625546255032*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"elim3", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"2", "x"}], "+", "y", "-", "z"}], "\[Equal]", "10"}], ",", 
+   RowBox[{
+    RowBox[{"x", "+", "y", "+", "z"}], "\[Equal]", "6"}], ",", 
+   RowBox[{
+    RowBox[{"y", "+", "z"}], "\[Equal]", "2"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.668625305429274*^9, 3.668625307103754*^9}, {
+  3.668625347891571*^9, 3.668625379263311*^9}, {3.668625441866588*^9, 
+  3.668625443711114*^9}, {3.6686255570011168`*^9, 3.668625558602304*^9}, {
+  3.6686255908363047`*^9, 3.668625592700678*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"4", ",", "2", ",", "0"}], "}"}]], "Output",
+ CellChangeTimes->{3.668625558976232*^9, 3.66862559328539*^9, 
+  3.668626511451281*^9}]
+}, Open  ]],
+
+Cell["Result : 1 solution", "Text",
+ CellChangeTimes->{{3.668625537537077*^9, 3.668625546255032*^9}}],
+
+Cell[TextData[{
+ "Ummm. Those results are ",
+ StyleBox["not right",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ ". I think I\[CloseCurlyQuote]ve hit the limits of reasonable \
+programmability of elimination, and while I could certainly work it out by \
+hand, cursory visual inspection reveals the answers are ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{"One", ",", " "}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "none, many). I\[CloseCurlyQuote]ll come back and fix this if I have time.\n\
+Lesson learned: Don\[CloseCurlyQuote]t do elimination by computer!"
+}], "Text",
+ CellChangeTimes->{{3.668626414836218*^9, 3.668626465420478*^9}, {
+  3.668626612317173*^9, 3.668626612756908*^9}, {3.668627113882958*^9, 
+  3.6686271140500193`*^9}, {3.668627148340852*^9, 3.6686271505118933`*^9}, {
+  3.6686272126051407`*^9, 3.668627240773067*^9}}]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Gauss-Jordan Elimination", "Section",
+ CellChangeTimes->{{3.668627249778219*^9, 3.668627255356688*^9}, 
+   3.668628230654607*^9}],
+
+Cell[TextData[{
+ "I\[CloseCurlyQuote]ve done the by-hand part of this ",
+ StyleBox["far too many times",
+  FontSlant->"Italic"],
+ " before for my Linear Algebra class, and that was valuable. Doing it again \
+now wouldn\[CloseCurlyQuote]t be, so I\[CloseCurlyQuote]m not going to."
+}], "Text",
+ CellChangeTimes->{{3.668628263245524*^9, 3.6686283065871553`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"aug", "=", 
+   RowBox[{"(", GridBox[{
+      {"1", "1", "1", "6"},
+      {"0", "1", "1", "2"},
+      {"1", "0", 
+       RowBox[{"-", "2"}], "4"}
+     }], ")"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"RowReduce", "[", "aug", "]"}], "//", "MatrixForm"}]}], "Input",
+ CellChangeTimes->{{3.668627825747364*^9, 3.6686278890964518`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"1", "0", "0", "4"},
+     {"0", "1", "0", "2"},
+     {"0", "0", "1", "0"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.668627889820806*^9}]
+}, Open  ]],
+
+Cell["Result: Single solution", "Text",
+ CellChangeTimes->{{3.668627958342547*^9, 3.668627963478559*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"aug", "=", 
+   RowBox[{"(", GridBox[{
+      {"1", "1", "1", 
+       RowBox[{"-", "6"}]},
+      {"2", "1", 
+       RowBox[{"-", "1"}], "18"},
+      {"1", "0", 
+       RowBox[{"-", "2"}], "4"}
+     }], ")"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"RowReduce", "[", "aug", "]"}], "//", "MatrixForm"}]}], "Input",
+ CellChangeTimes->{{3.668627825747364*^9, 3.668627911518031*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"1", "0", 
+      RowBox[{"-", "2"}], "0"},
+     {"0", "1", "3", "0"},
+     {"0", "0", "0", "1"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.668627916023554*^9}]
+}, Open  ]],
+
+Cell["Result: No solutions", "Text",
+ CellChangeTimes->{{3.668627965986586*^9, 3.668627972302319*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"aug", "=", 
+   RowBox[{"(", GridBox[{
+      {"1", "1", "1", "6"},
+      {"2", "1", 
+       RowBox[{"-", "1"}], "10"},
+      {"1", "0", 
+       RowBox[{"-", "2"}], "4"}
+     }], ")"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"RowReduce", "[", "aug", "]"}], "//", "MatrixForm"}]}], "Input",
+ CellChangeTimes->{{3.668627825747364*^9, 3.6686278890964518`*^9}, {
+  3.668627941237083*^9, 3.668627946236767*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"1", "0", 
+      RowBox[{"-", "2"}], "4"},
+     {"0", "1", "3", "2"},
+     {"0", "0", "0", "0"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.668627951162058*^9}]
+}, Open  ]],
+
+Cell["Result: Infinitely many solutions", "Text",
+ CellChangeTimes->{{3.668627975489189*^9, 3.6686279830435667`*^9}}],
+
+Cell["\<\
+I realize that this is the fuller form, but don\[CloseCurlyQuote]t see much \
+point in stopping before achieving  the leading 1\[CloseCurlyQuote]s \
+coefficient.\
+\>", "Text",
+ CellChangeTimes->{{3.668628173053804*^9, 3.6686281967523527`*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["LU Decomposition", "Section",
+ CellChangeTimes->{{3.668630832940793*^9, 3.6686308371326733`*^9}}],
+
+Cell["\<\
+The LUDecomposition command returns the results in an annoying flattened \
+format. This fixes that. For convenience, it drops the permutation matrix.\
+\>", "Text",
+ CellChangeTimes->{{3.668631856292357*^9, 3.6686319216167917`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "LU", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"LU", "[", "mat_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"lu", ",", "p", ",", "c", ",", "l", ",", "u"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"lu", ",", "p", ",", "c"}], "}"}], "=", 
+      RowBox[{"LUDecomposition", "[", "mat", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"l", "=", 
+      RowBox[{
+       RowBox[{"lu", " ", 
+        RowBox[{"SparseArray", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"i_", ",", "j_"}], "}"}], "/;", 
+            RowBox[{"j", "<", "i"}]}], "\[Rule]", "1"}], ",", 
+          RowBox[{"Dimensions", "@", "mat"}]}], "]"}]}], "+", 
+       RowBox[{"IdentityMatrix", "[", 
+        RowBox[{"Length", "@", "mat"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"u", "=", 
+      RowBox[{"UpperTriangularize", "[", "lu", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"l", ",", "u"}], "}"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}]}], "Input",
+ CellChangeTimes->{{3.668630840569675*^9, 3.668630932729393*^9}, {
+  3.668630963910878*^9, 3.668630967268003*^9}, {3.6686310066125793`*^9, 
+  3.668631009270912*^9}, {3.6686311038584347`*^9, 3.6686311205952787`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"aug", "=", 
+   RowBox[{"(", GridBox[{
+      {"1", "1", "1"},
+      {"0", "1", "1"},
+      {"1", "0", 
+       RowBox[{"-", "2"}]}
+     }], ")"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Grid", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"\"\<L\>\"", ",", "\"\<U\>\""}], "}"}], ",", 
+    RowBox[{"MatrixForm", "/@", 
+     RowBox[{"LU", "[", "aug", "]"}]}]}], "}"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.668627825747364*^9, 3.6686278890964518`*^9}, {
+   3.668631515600326*^9, 3.6686315158515873`*^9}, 3.668631697121252*^9, {
+   3.668631936303358*^9, 3.668631976908122*^9}, {3.668632428024108*^9, 
+   3.668632463664426*^9}, {3.6686330688570232`*^9, 3.6686330733659143`*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"L\"\>", "\<\"U\"\>"},
+    {
+     TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+         {"1", "0", "0"},
+         {"0", "1", "0"},
+         {"1", 
+          RowBox[{"-", "1"}], "1"}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+      Function[BoxForm`e$, 
+       MatrixForm[BoxForm`e$]]], 
+     TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+         {"1", "1", "1"},
+         {"0", "1", "1"},
+         {"0", "0", 
+          RowBox[{"-", "2"}]}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+      Function[BoxForm`e$, 
+       MatrixForm[BoxForm`e$]]]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{{3.668631965749035*^9, 3.668631977153056*^9}, {
+  3.6686324257837753`*^9, 3.6686324642344112`*^9}, {3.668633070159313*^9, 
+  3.668633074052546*^9}}]
+}, Open  ]],
+
+Cell["Result: ", "Text",
+ CellChangeTimes->{{3.668627958342547*^9, 3.668627963478559*^9}, 
+   3.668631692820187*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"aug", "=", 
+   RowBox[{"(", GridBox[{
+      {"1", "1", "1"},
+      {"2", "1", 
+       RowBox[{"-", "1"}]},
+      {"1", "0", 
+       RowBox[{"-", "2"}]}
+     }], ")"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Grid", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"\"\<L\>\"", ",", "\"\<U\>\""}], "}"}], ",", 
+    RowBox[{"MatrixForm", "/@", 
+     RowBox[{"LU", "[", "aug", "]"}]}]}], "}"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.668627825747364*^9, 3.668627911518031*^9}, {
+   3.668631512981739*^9, 3.6686315133333893`*^9}, 3.668631698946868*^9, {
+   3.6686319885703583`*^9, 3.6686319889067574`*^9}, {3.668633052728758*^9, 
+   3.668633077879966*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"LUDecomposition", "::", "sing"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Matrix \[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"1\\\", \\\",\\\", \\\"1\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\
+\"2\\\", \\\",\\\", \\\"1\\\", \\\",\\\", RowBox[{\\\"-\\\", \\\"1\\\"}]}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"1\\\", \\\",\\\", \
+\\\"0\\\", \\\",\\\", RowBox[{\\\"-\\\", \\\"2\\\"}]}], \\\"}\\\"}]}], \
+\\\"}\\\"}]\\)\[NoBreak] is singular. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\
+\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/sing\\\", ButtonNote -> \
+\\\"LUDecomposition::sing\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.668631989345222*^9, 3.668633078189638*^9}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"L\"\>", "\<\"U\"\>"},
+    {
+     TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+         {"1", "0", "0"},
+         {"2", "1", "0"},
+         {"1", "1", "1"}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+      Function[BoxForm`e$, 
+       MatrixForm[BoxForm`e$]]], 
+     TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+         {"1", "1", "1"},
+         {"0", 
+          RowBox[{"-", "1"}], 
+          RowBox[{"-", "3"}]},
+         {"0", "0", "0"}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+      Function[BoxForm`e$, 
+       MatrixForm[BoxForm`e$]]]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{3.6686319893823633`*^9, 3.668633078230995*^9}]
+}, Open  ]],
+
+Cell["Result: ", "Text",
+ CellChangeTimes->{{3.668627965986586*^9, 3.668627972302319*^9}, 
+   3.668631695398657*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell["Misc", "Section",
  CellChangeTimes->{{3.668540193564677*^9, 3.6685401945476027`*^9}}],
 
@@ -787,13 +1714,12 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"NSolve", "::", "bdomv"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Warning: \[NoBreak]\\!\\(\\*RowBox[{\\\"Vectors\\\", \\\"[\
-\\\", RowBox[{\\\"2\\\", \\\",\\\", \\\"Complexes\\\"}], \\\"]\\\"}]\\)\
-\[NoBreak] is not a valid domain specification. Assuming it is a variable to \
-eliminate. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\
-\\\", ButtonFrame->None, ButtonData:>\\\"paclet:ref/NSolve\\\", ButtonNote -> \
+   RowBox[{"NSolve", "::", "bdomv"}], "MessageName"], ":", 
+  " ", "\<\"Warning: \[NoBreak]\\!\\(\\*RowBox[{\\\"Vectors\\\", \\\"[\\\", \
+RowBox[{\\\"2\\\", \\\",\\\", \\\"Complexes\\\"}], \\\"]\\\"}]\\)\[NoBreak] \
+is not a valid domain specification. Assuming it is a variable to eliminate. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/NSolve\\\", ButtonNote -> \
 \\\"NSolve::bdomv\\\"]\\)\"\>"}]], "Message", "MSG",
  CellChangeTimes->{3.6685402140183*^9}],
 
@@ -806,15 +1732,324 @@ Cell[BoxData["Array"], "Input",
  CellChangeTimes->{{3.6685403216959724`*^9, 3.668540322460411*^9}}],
 
 Cell[BoxData[
+ RowBox[{"soleq1", ",", "soleq2", ",", "soleq3", ",", "xval", ",", "yval", 
+  ",", "zval"}]], "Input"],
+
+Cell[BoxData[
  RowBox[{"CoefficientArrays", "[", "]"}]], "Input",
- CellChangeTimes->{{3.668540489788927*^9, 3.668540495145831*^9}}]
+ CellChangeTimes->{{3.668540489788927*^9, 3.668540495145831*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"elim3", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"x", "+", "y", "+", "z"}], "\[Equal]", "6"}], ",", 
+   RowBox[{
+    RowBox[{"x", "+", "y", "+", "z"}], "\[Equal]", "6"}], ",", 
+   RowBox[{
+    RowBox[{"x", "+", "y", "+", "z"}], "\[Equal]", "6"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.668625305429274*^9, 3.668625307103754*^9}, {
+  3.668625347891571*^9, 3.668625379263311*^9}, {3.668625441866588*^9, 
+  3.668625443711114*^9}, {3.668625619617859*^9, 3.6686256225886307`*^9}, {
+  3.6686256941197367`*^9, 3.6686256997417393`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(\\*RowBox[{\\\"1\\\"}]\\)\[NoBreak] \
+of \[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \\\"}\\\"}]\\)\[NoBreak] does not \
+exist. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/partw\\\", ButtonNote -> \
+\\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{
+  3.668625622899886*^9, {3.668625659141762*^9, 3.6686257190257998`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"6", "-", "z", "-", 
+    RowBox[{
+     RowBox[{"{", "}"}], "\[LeftDoubleBracket]", 
+     RowBox[{"1", ",", "2"}], "\[RightDoubleBracket]"}]}], ",", 
+   RowBox[{
+    RowBox[{"{", "}"}], "\[LeftDoubleBracket]", 
+    RowBox[{"1", ",", "2"}], "\[RightDoubleBracket]"}], ",", "z"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.66862562293069*^9, {3.668625659170309*^9, 3.668625719056131*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["soleq1"], "Input",
+ CellChangeTimes->{{3.668625721133275*^9, 3.668625722250449*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"x", "\[Rule]", 
+   RowBox[{"6", "-", "y", "-", "z"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.66862572253128*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["soleq2"], "Input",
+ CellChangeTimes->{{3.668625725657496*^9, 3.668625727364118*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.668625727713695*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"x", "+", "y", "+", "z"}], "\[Equal]", "6"}], ")"}], "/.", 
+  "soleq1"}]], "Input",
+ CellChangeTimes->{{3.6686257442881393`*^9, 3.668625750211075*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.6686257505299387`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"LUDecomposition", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", "1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "0"}], "}"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.668629208361731*^9, 3.6686292175333157`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "1"}], "}"}], ",", "0"}], "}"}]], "Output",
+ CellChangeTimes->{3.668629217811356*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"RowReduce", "[", 
+  RowBox[{"(", GridBox[{
+     {"a", "b", "1", "0"},
+     {"c", "d", "0", "1"}
+    }], ")"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6686295813805113`*^9, 3.6686295985397453`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", 
+     FractionBox["d", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "b"}], " ", "c"}], "+", 
+       RowBox[{"a", " ", "d"}]}]], ",", 
+     FractionBox["b", 
+      RowBox[{
+       RowBox[{"b", " ", "c"}], "-", 
+       RowBox[{"a", " ", "d"}]}]]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", 
+     FractionBox["c", 
+      RowBox[{
+       RowBox[{"b", " ", "c"}], "-", 
+       RowBox[{"a", " ", "d"}]}]], ",", 
+     FractionBox["a", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "b"}], " ", "c"}], "+", 
+       RowBox[{"a", " ", "d"}]}]]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.668629599094654*^9, 3.668629813498077*^9, {3.6686298638340693`*^9, 
+   3.668629880458192*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Partition", "[", 
+  RowBox[{"%", ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "2"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6686298153090677`*^9, 3.6686298432234497`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1"}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        FractionBox["d", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"-", "b"}], " ", "c"}], "+", 
+          RowBox[{"a", " ", "d"}]}]], ",", 
+        FractionBox["b", 
+         RowBox[{
+          RowBox[{"b", " ", "c"}], "-", 
+          RowBox[{"a", " ", "d"}]}]]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        FractionBox["c", 
+         RowBox[{
+          RowBox[{"b", " ", "c"}], "-", 
+          RowBox[{"a", " ", "d"}]}]], ",", 
+        FractionBox["a", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"-", "b"}], " ", "c"}], "+", 
+          RowBox[{"a", " ", "d"}]}]]}], "}"}]}], "}"}]}], "}"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.66862984354599*^9, 3.668629881872363*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "[", 
+  RowBox[{"[", 
+   RowBox[{"1", ",", "2"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.668629853551745*^9, 3.668629878707164*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["d", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "b"}], " ", "c"}], "+", 
+       RowBox[{"a", " ", "d"}]}]], ",", 
+     FractionBox["b", 
+      RowBox[{
+       RowBox[{"b", " ", "c"}], "-", 
+       RowBox[{"a", " ", "d"}]}]]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["c", 
+      RowBox[{
+       RowBox[{"b", " ", "c"}], "-", 
+       RowBox[{"a", " ", "d"}]}]], ",", 
+     FractionBox["a", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "b"}], " ", "c"}], "+", 
+       RowBox[{"a", " ", "d"}]}]]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.668629855553462*^9, 3.668629883754965*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"val", "=", "%"}]], "Input",
+ CellChangeTimes->{{3.668629890146511*^9, 3.668629894465971*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["d", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "b"}], " ", "c"}], "+", 
+       RowBox[{"a", " ", "d"}]}]], ",", 
+     FractionBox["b", 
+      RowBox[{
+       RowBox[{"b", " ", "c"}], "-", 
+       RowBox[{"a", " ", "d"}]}]]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["c", 
+      RowBox[{
+       RowBox[{"b", " ", "c"}], "-", 
+       RowBox[{"a", " ", "d"}]}]], ",", 
+     FractionBox["a", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "b"}], " ", "c"}], "+", 
+       RowBox[{"a", " ", "d"}]}]]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6686298947698193`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FullSimplify", "[", 
+  RowBox[{"Inverse", "@", "val"}], "]"}]], "Input",
+ CellChangeTimes->{{3.668629895686038*^9, 3.66862990749517*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "d"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.668629899369018*^9, 3.668629907809238*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"HoldForm", "@", 
+    RowBox[{"Inverse", "@", 
+     RowBox[{"IdentityMatrix", "[", "5", "]"}]}]}], "//", "Transpose"}], "//",
+   "TraditionalForm"}]], "Input",
+ CellChangeTimes->{{3.668632602949181*^9, 3.668632634592183*^9}, {
+  3.668633002106329*^9, 3.668633015821033*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  TemplateBox[{RowBox[{"(", 
+      TagBox[
+       TemplateBox[{
+         RowBox[{"IdentityMatrix", "[", "5", "]"}]}, "Inverse", SyntaxForm -> 
+        SuperscriptBox], HoldForm], ")"}]},
+   "Transpose"], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.668632618508019*^9, 3.668632634899727*^9}, {
+  3.6686330087528477`*^9, 3.668633016228779*^9}}]
+}, Open  ]]
 }, Open  ]]
 },
-WindowSize->{942, 962},
-WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+WindowSize->{959, 1014},
+WindowMargins->{{Automatic, -240}, {0, Automatic}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 Magnification:>1.5 Inherited,
-FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (February 25, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->"Default.nb"
 ]
 
