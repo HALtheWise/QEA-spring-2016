@@ -44518,7 +44518,7 @@ Cell[BoxData[
   "}"}]], "Output",
  CellChangeTimes->{{3.668946682863392*^9, 3.668946690262938*^9}}]
 }, Open  ]]
-}, Open  ]]
+}, Closed]]
 },
 WindowSize->{959, 1013},
 WindowMargins->{{Automatic, -9}, {Automatic, -8}},
