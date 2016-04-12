@@ -1,0 +1,413 @@
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Spannning Vectors Inclass", "Title",
+ CellChangeTimes->{{3.6689559242711887`*^9, 3.668955931060442*^9}, {
+  3.669317695924245*^9, 3.6693177082655373`*^9}, {3.6693726261094427`*^9, 
+  3.669372642810533*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Eric Miller - QEA - April 11, 2016", "Chapter",
+ CellChangeTimes->{{3.6689559340774717`*^9, 3.6689559455344963`*^9}, {
+  3.6689561207213078`*^9, 3.6689561229838543`*^9}, {3.66931771630695*^9, 
+  3.669317716367874*^9}, {3.669372632618861*^9, 3.669372632796321*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Definitions", "Section",
+ CellChangeTimes->{{3.668429558834918*^9, 3.668429561407576*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.668429837642713*^9, 3.668429846449486*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"NotebookDirectory", "::", "nosv"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"The notebook \
+\[NoBreak]\\!\\(\\*TemplateBox[List[FrontEndObject[LinkObject[\\\"r582p_shm\\\
+\", 3, 1]], 32, \\\"FrontEndObject[LinkObject[\\\\\\\"r582p_shm\\\\\\\", 3, \
+1]]\\\", \\\"32\\\", \\\"\\\\\\\"Untitled-1\\\\\\\"\\\"], \
+\\\"NotebookObjectUnsaved\\\"]\\)\[NoBreak] is not saved. \\!\\(\\*ButtonBox[\
+\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/NotebookDirectory\\\", ButtonNote -> \
+\\\"NotebookDirectory::nosv\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.669372718530677*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"SetDirectory", "::", "fstr"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"File specification \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"$Failed\\\"}]\\)\[NoBreak] is not a string of \
+one or more characters. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/fstr\\\", ButtonNote -> \
+\\\"SetDirectory::fstr\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.669372718572884*^9}]
+}, Open  ]],
+
+Cell["\<\
+Eventually, these functions may want to use the Notation` package to actually \
+make the subscripted letters have downvalues. For now, I\[CloseCurlyQuote]m \
+just being careful.\
+\>", "Text",
+ CellChangeTimes->{{3.668539646692463*^9, 3.6685396880617914`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "@", "ClearSubscripts"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSubscripts", "[", "top_", "]"}], ":=", 
+  RowBox[{"(", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Unset", "[", 
+        RowBox[{"Evaluate", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}], ";", 
+       RowBox[{"Evaluate", "[", 
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ")"}], "&"}], "/@", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"DownValues", "[", "Subscript", "]"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", 
+          RowBox[{"1", ",", "1", ",", "1"}], "]"}], "]"}], "\[Equal]", 
+        "top"}], "&"}]}], "]"}]}], "\[IndentingNewLine]", 
+   ")"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "@", "unknownArray"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"unknownArray", "[", 
+   RowBox[{"top_", ",", 
+    RowBox[{"dim_", "/;", 
+     RowBox[{"NumberQ", "[", "dim", "]"}]}]}], "]"}], ":=", 
+  RowBox[{"(", "\[IndentingNewLine]", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     SubscriptBox["top", "i"], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "dim"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+   ")"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"unknownArray", "[", 
+   RowBox[{"top_", ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"dim1_", "/;", 
+       RowBox[{"NumberQ", "[", "dim1", "]"}]}], ",", 
+      RowBox[{"dim2_", "/;", 
+       RowBox[{"NumberQ", "[", "dim2", "]"}]}]}], "}"}]}], "]"}], ":=", 
+  RowBox[{"(", "\[IndentingNewLine]", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     SubscriptBox["top", 
+      RowBox[{"i", ",", "j"}]], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "dim1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "dim2"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+   ")"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.668429563050755*^9, 3.668429577667501*^9}, {
+  3.668429995413262*^9, 3.6684301083178*^9}, {3.668430140359806*^9, 
+  3.6684302377840242`*^9}, {3.668430291492435*^9, 3.668430298866539*^9}, {
+  3.668430703301008*^9, 3.668430705542173*^9}, {3.6684307363686743`*^9, 
+  3.6684307618355217`*^9}, {3.668539638584363*^9, 3.6685396435793533`*^9}, {
+  3.6685397761791153`*^9, 3.668539781323637*^9}, {3.66853998693328*^9, 
+  3.6685399976749444`*^9}, {3.6685400277450047`*^9, 3.668540060531209*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Bending stress", "Section",
+ CellChangeTimes->{{3.669372661941102*^9, 3.669372664279912*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"A", "=", 
+    RowBox[{
+     RowBox[{"(", GridBox[{
+        {"29.29", 
+         RowBox[{"-", "9.366"}]},
+        {
+         RowBox[{"-", "9.366"}], "5.667"}
+       }], ")"}], "*", 
+     RowBox[{"10", "^", "6"}], 
+     TemplateBox[{InterpretationBox["\[InvisibleSpace]", 1],RowBox[{
+         SuperscriptBox["\"mm\"", "4"]}],"millimeters to the fourth",
+       SuperscriptBox["\"Millimeters\"", "4"]},
+      "Quantity"]}]}], ";"}], "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.669372670392013*^9, 3.669372725422982*^9}, 
+   3.669372839992639*^9, {3.6693729673224154`*^9, 3.669372971889722*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Grid", "@", 
+  RowBox[{"Eigensystem", "@", "A"}]}]], "Input",
+ CellChangeTimes->{{3.669372776264048*^9, 3.669372800137208*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TemplateBox[{"0.00003255276576155535`",RowBox[{
+         SuperscriptBox["\"m\"", "4"]}],"meters to the fourth",SuperscriptBox[
+       "\"Meters\"", "4"]},
+      "Quantity"], 
+     TemplateBox[{"2.4042342384446462`*^-6",RowBox[{
+         SuperscriptBox["\"m\"", "4"]}],"meters to the fourth",SuperscriptBox[
+       "\"Meters\"", "4"]},
+      "Quantity"]},
+    {
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "0.9443394299994814`"}], ",", "0.32897270547608437`"}], 
+      "}"}], 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "0.32897270547608437`"}], ",", 
+       RowBox[{"-", "0.9443394299994814`"}]}], "}"}]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{{3.669372783397148*^9, 3.669372800579401*^9}, 
+   3.669372841832509*^9, 3.6693729736927443`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"R", "=", 
+   RowBox[{"Eigenvectors", "@", "A"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"R", "//", "MatrixForm"}]}], "Input",
+ CellChangeTimes->{{3.669373136464398*^9, 3.669373183385105*^9}, {
+  3.669373229687231*^9, 3.669373256282283*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"-", "0.9443394299994814`"}], "0.32897270547608437`"},
+     {
+      RowBox[{"-", "0.32897270547608437`"}], 
+      RowBox[{"-", "0.9443394299994814`"}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.669373153451861*^9, 3.6693731837322197`*^9, {3.669373238606306*^9, 
+   3.669373256968301*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"FindMinimum", "[", 
+  RowBox[{
+   RowBox[{"Abs", "@", 
+    RowBox[{"Tr", "[", 
+     RowBox[{
+      RowBox[{"RotationMatrix", "[", "\[Theta]", "]"}], "-", "R"}], "]"}]}], 
+   ",", "\[Theta]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"RotationMatrix", "[", 
+   RowBox[{"%", "[", 
+    RowBox[{"[", 
+     RowBox[{"2", ",", "1", ",", "2"}], "]"}], "]"}], "]"}], "//", 
+  "MatrixForm"}]}], "Input",
+ CellChangeTimes->{{3.669373157495275*^9, 3.669373169743085*^9}, {
+  3.669373201275794*^9, 3.6693732113749313`*^9}, {3.669373334912064*^9, 
+  3.669373364123602*^9}, {3.669373397421039*^9, 3.6693734212176523`*^9}, {
+  3.669373533743091*^9, 3.6693735631243668`*^9}, {3.6693736049663363`*^9, 
+  3.669373687656393*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindMinimum", "::", "lstol"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"The line search decreased the step size to within the \
+tolerance specified by AccuracyGoal and PrecisionGoal but was unable to find \
+a sufficient decrease in the function. You may need more than \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\)\[NoBreak] digits of \
+working precision to meet these tolerances. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/FindMinimum/lstol\\\", ButtonNote -> \
+\\\"FindMinimum::lstol\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6693736884240313`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1.862189291657046`*^-9", ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Theta]", "\[Rule]", "3.476808174920385`"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.669373685668522*^9, 3.669373688425377*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"-", "0.944339430930576`"}], "0.3289727028033114`"},
+     {
+      RowBox[{"-", "0.3289727028033114`"}], 
+      RowBox[{"-", "0.944339430930576`"}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.669373685668522*^9, 3.669373688426372*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindMinimum", "::", "lstol"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"The line search decreased the step size to within the \
+tolerance specified by AccuracyGoal and PrecisionGoal but was unable to find \
+a sufficient decrease in the function. You may need more than \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\)\[NoBreak] digits of \
+working precision to meet these tolerances. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/FindMinimum/lstol\\\", ButtonNote -> \
+\\\"FindMinimum::lstol\\\"]\\)\"\>"}]], "Message", "MSG",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{
+  3.669373563295413*^9, {3.669373628469077*^9, 3.669373685667536*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindMinimum", "::", "lstol"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"The line search decreased the step size to within the \
+tolerance specified by AccuracyGoal and PrecisionGoal but was unable to find \
+a sufficient decrease in the function. You may need more than \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\)\[NoBreak] digits of \
+working precision to meet these tolerances. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/FindMinimum/lstol\\\", ButtonNote -> \
+\\\"FindMinimum::lstol\\\"]\\)\"\>"}]], "Message", "MSG",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{
+  3.669373563295413*^9, {3.669373628469077*^9, 3.669373683197672*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1.862189291657046`*^-9", ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Theta]", "\[Rule]", "3.476808174920385`"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.6693731656957808`*^9, 3.669373170339163*^9}, {
+  3.669373201508095*^9, 3.669373241630877*^9}, {3.669373343028767*^9, 
+  3.669373366131721*^9}, {3.6693734019363127`*^9, 3.669373421921945*^9}, {
+  3.6693735371446447`*^9, 3.669373563297079*^9}, {3.6693736284703493`*^9, 
+  3.669373675964066*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"-", "0.944339430930576`"}], "0.3289727028033114`"},
+     {
+      RowBox[{"-", "0.3289727028033114`"}], 
+      RowBox[{"-", "0.944339430930576`"}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.6693731656957808`*^9, 3.669373170339163*^9}, {
+  3.669373201508095*^9, 3.669373241630877*^9}, {3.669373343028767*^9, 
+  3.669373366131721*^9}, {3.6693734019363127`*^9, 3.669373421921945*^9}, {
+  3.6693735371446447`*^9, 3.669373563297079*^9}, {3.6693736284703493`*^9, 
+  3.6693736759649563`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.669373573126172*^9, 3.669373582435021*^9}, 
+   3.669373635634738*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"-", "0.944339430930576`"}], "0.3289727028033114`"},
+     {
+      RowBox[{"-", "0.3289727028033114`"}], 
+      RowBox[{"-", "0.944339430930576`"}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.6693735783825693`*^9, 3.669373582817651*^9}, 
+   3.669373633064728*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{979, 1013},
+WindowMargins->{{-9, Automatic}, {Automatic, -8}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+StyleDefinitions->"Default.nb"
+]
+
